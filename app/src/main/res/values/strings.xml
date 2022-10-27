@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Table</string>
+    <string name="entrance">Вход</string>
+    <string name="forgetPassword">Забыли пароль?</string>
+    <string name="noAccount">Ещё нет аккаунта?</string>
+    <string name="entry">Войти</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="dalee">Далее</string>
+    <string name="textAboutForget">Укажите email, который вы использовали ранее при регистраци. На него придет 4-х значный код</string>
+    <string name="PasswordRecovery">Восстановление пароля</string>
+    <string name="Ready">Готово</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="confirmPassword">ConfirmPassword</string>
+    <string name="register">Регистрация</string>
+
 </resources>

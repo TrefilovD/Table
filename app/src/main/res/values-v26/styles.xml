@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextViewHeaders">
+        <item name="android:textAppearance">@style/HeadersText</item>
+    </style>
+    <style name="HeadersText">
+        <item name="android:font">@font/roboto_regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:color">@color/darknotes</item>
+
+    </style>
+</resources>
