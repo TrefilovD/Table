@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     Map<String,String> dictionary = new HashMap<String,String>();
     String json = new String();
+    //test
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
