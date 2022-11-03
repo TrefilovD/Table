@@ -9,6 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FDBA6F</color>
     <color name="darknotes">#121F50</color>
-    <color name="pink">#FFB2C1</color>
+    <color name="pink">#80FFB2C1</color>
     <color name="pressedbutton">#dc9443</color>
+    <color name="lightgrey">#80000000</color>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#FFBDBDBD</color>
+    <color name="gray_600">#FF757575</color>
+
 </resources>
