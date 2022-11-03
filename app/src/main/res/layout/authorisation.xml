@@ -40,7 +40,7 @@
         android:text="@string/entrance"
         style="@style/HeadersText"
         android:textColor="@color/darknotes"
-        android:layout_below="@id/strelka"
+        android:layout_below="@id/strelka1"
         android:layout_marginTop="90dp"
         android:background="@drawable/pink_rect"
 
@@ -67,7 +67,7 @@
     </Button>
 
     <Button
-        android:id="@+id/strelka"
+        android:id="@+id/strelka1"
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:layout_marginLeft="20dp"

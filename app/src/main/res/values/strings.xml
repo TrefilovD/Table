@@ -14,5 +14,13 @@
     <string name="surname">Фамилия</string>
     <string name="confirmPassword">ConfirmPassword</string>
     <string name="register">Регистрация</string>
+    <string name="tellaboutyourself1">Расскажите о себе?)</string>
+    <string name="tellaboutyourself2">Эту информацию можно будет изменить или дополнить после окончания регистрации</string>
+    <string name="tellaboutyourself3">О себе</string>
+    <string name="tellaboutyourself4">Расскажите о увлечениях, связанных с настольными играми, ДНД, ___</string>
+    <string name="lovelygames1">Любимые игры</string>
+    <string name="lovelygames2">Добавьте несколько любимых настолок</string>
+    <string name="hashtags1">#хештеги</string>
+    <string name="hashtags2">По ним вас будет проще найти другим людям</string>
 
 </resources>
