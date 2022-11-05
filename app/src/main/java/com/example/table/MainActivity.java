@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 public class MainActivity extends AppCompatActivity {
 
     String json = new String();
+    AppWriterHandler awh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,43 +30,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Client client = new Client(getApplicationContext())
-                .setEndpoint("http://tableapp.online:8111/v1")
-                .setProject("6356860bb84da9132dfd");
-
-        Account account = new Account(client);
-
+        awh = new AppWriterHandler(getApplicationContext());
         try {
-            account.createEmailSession("alexandro-tolstenko@mail.ru","12345678", new Continuation<Session>() {
-                @NotNull
-                @Override
-                public CoroutineContext getContext() {
-                    return EmptyCoroutineContext.INSTANCE;
-                }
-
-                @Override
-                public void resumeWith(@NotNull Object o) {
-                    try {
-                        if (o instanceof Result.Failure) {
-                            Result.Failure failure = (Result.Failure) o;
-                            throw failure.exception;
-                        } else {
-                            Session session = (Session) o;
-                            Log.d("RESPONSE", JsonExtensionsKt.toJson(session));
-                        }
-                    } catch (Throwable th) {
-                        Log.e("ERROR", th.toString());
-                    }
-                }
-            });
-        } catch (AppwriteException e) {
-            e.printStackTrace();
+            awh.authorise("alexandro-tolstenko@mail.ru", "12345678");
         }
-
+        catch(Throwable th){
+            Log.e("ERROR", th.toString());
+        }
     }
 
     public void testMessage (View view){
-        Client client = new Client(getApplicationContext())
+       awh.getUserData();
+        /*Client client = new Client(getApplicationContext())
                 .setEndpoint("http://tableapp.online:8111/v1")
                 .setProject("6356860bb84da9132dfd");
 
@@ -119,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         catch (Throwable th){
             Log.e("Error", th.toString());
         }
-
+*/
     }
 
     public void testUpdate(View view){

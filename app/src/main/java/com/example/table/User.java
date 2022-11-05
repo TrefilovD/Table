@@ -43,7 +43,6 @@ public class User {
         this.phone = phone;
         this.sex = sex;
     }
-
 }
 
 
