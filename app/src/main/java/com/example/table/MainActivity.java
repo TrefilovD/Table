@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import io.appwrite.Client;
 import io.appwrite.exceptions.AppwriteException;
 import io.appwrite.extensions.JsonExtensionsKt;
+import io.appwrite.models.DocumentList;
 import io.appwrite.models.Session;
 import io.appwrite.services.Account;
 import io.appwrite.services.Databases;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     String json = new String();
     AppWriterHandler awh;
-
+    DocumentList dl;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testMessage (View view){
-       awh.getUserData();
+       awh.getUserDocumentsByUserID();
         /*Client client = new Client(getApplicationContext())
                 .setEndpoint("http://tableapp.online:8111/v1")
                 .setProject("6356860bb84da9132dfd");
@@ -99,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testUpdate(View view){
-        Client client = new Client(getApplicationContext())
+        awh.getUserData();
+        /*Client client = new Client(getApplicationContext())
                 .setEndpoint("http://tableapp.online:8111/v1")
                 .setProject("6356860bb84da9132dfd");
 
@@ -138,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         }
         catch (Throwable th){
             Log.e("ERROR", th.toString());
-        }
+        }*/
     }
 }
 

@@ -47,7 +47,7 @@ public class AppWriterHandler {
     private static Client client;
     private final Databases databases;
     private final Account account;
-
+    private String json;
     private String userID;
 
     public AppWriterHandler(Context context) {
@@ -103,8 +103,9 @@ public class AppWriterHandler {
         return session[0];
     }
 
-    private DocumentList getUserDocuments(){
+    public String getUserDocumentsByUserID(){
         final DocumentList[] dl = new DocumentList[1];
+        final String[] response = new String[1];
 
         try{
             databases.listDocuments(
@@ -125,8 +126,8 @@ public class AppWriterHandler {
                                     Result.Failure failure = (Result.Failure) o;
                                     throw failure.exception;
                                 } else {
-                                    dl[0] = (DocumentList) o;
-                                    String response = o.toString();
+                                    response[0] = JsonExtensionsKt.toJson(o);
+                                    json = response[0];
                                     Log.d("LIST_DOCUMENTS", JsonExtensionsKt.toJson(o));
                                 }
                             } catch (Throwable th) {
@@ -139,14 +140,19 @@ public class AppWriterHandler {
             Log.e("ERROR", th.toString());
         }
 
-        return dl[0];
+        return response[0];
     }
 
     public User getUserData (){
         User user = new User();
-
+        //TODO разобраться с многопоточностью, чтобы не было ссылок на NULL
         try{
-            getUserDocuments();
+            Integer index_1 = json.indexOf("{\"name");
+            Integer index_2 = json.indexOf("\"},");
+            String test_data = json.substring(index_1, index_2+2);
+
+            Log.i("TEST_DATA", test_data);
+            //databases.getDocument(databaseID, user_collectionID,*/
         }
         catch (Throwable th){
             Log.e("ERROR", th.toString());
