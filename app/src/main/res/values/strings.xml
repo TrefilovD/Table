@@ -14,5 +14,29 @@
     <string name="surname">Фамилия</string>
     <string name="confirmPassword">ConfirmPassword</string>
     <string name="register">Регистрация</string>
-
+    <string name="tellaboutyourself1">Расскажите о себе?)</string>
+    <string name="tellaboutyourself2">Эту информацию можно будет изменить или дополнить после окончания регистрации</string>
+    <string name="tellaboutyourself3">О себе</string>
+    <string name="tellaboutyourself4">Расскажите о увлечениях, связанных с настольными играми, ДНД, ___</string>
+    <string name="lovelygames1">Любимые игры</string>
+    <string name="lovelygames2">Добавьте несколько любимых настолок</string>
+    <string name="hashtags1">#хештеги</string>
+    <string name="hashtags2">По ним вас будет проще найти другим людям</string>
+    <string name="nazvanie">Название</string>
+    <string name="kolichestvo">Количество участников</string>
+    <string name="minimal">Минимальное</string>
+    <string name="maximum">Максимальное</string>
+    <string name="proverkakolichectva">За 3 дня до мероприятия мы автоматически проверим набралось ли нужное мин. количество человек, а также ограничим запросы на участие, если все уже найдены</string>
+    <string name="kogda">Когда?</string>
+    <string name="gorod">Город</string>
+    <string name="mesto">Место проведения</string>
+    <string name="metro">Ближайшие станции метро</string>
+    <string name="opisanie">Описание</string>
+    <string name="hint_opisanie"><font size = "13">Расскажите, что планируется на встрече, какие игры, есть ли у встречи план, что важно знать участникам о наполнении мероприятия?</font></string>
+    <string name="chat">Чат</string>
+    <string name="hint_chat"><font size = "13">Вставьте ссылку-приглашение в чат</font></string>
+    <string name="detali">Детали</string>
+    <string name="hint_detali"><font size = "13">Расскажите как удобнее добираться до места, как с вами связаться, как будет производиться оплата, если она предусмотрена?</font></string>
+    <string name="hint_hashtag">Чтобы мероприятие попадало в рекомендации и вы быстрее нашли близких по духу людей</string>
+    <string name="create">Создать</string>
 </resources>
