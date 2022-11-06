@@ -47,7 +47,9 @@ public class AppWriterHandler {
     private static Client client;
     private final Databases databases;
     private final Account account;
-    private String json;
+
+    public User user;
+
     private String userID;
 
     public AppWriterHandler(Context context) {
@@ -103,8 +105,7 @@ public class AppWriterHandler {
         return session[0];
     }
 
-    public String getUserDocumentsByUserID(){
-        final DocumentList[] dl = new DocumentList[1];
+    public void getUserDataByUserID(){
         final String[] response = new String[1];
 
         try{
@@ -127,8 +128,26 @@ public class AppWriterHandler {
                                     throw failure.exception;
                                 } else {
                                     response[0] = JsonExtensionsKt.toJson(o);
-                                    json = response[0];
+
+                                    Gson g = new Gson();
+
+                                    try{
+                                        Integer index_1 = response[0].indexOf("{\"name");
+                                        Integer index_2 = response[0].indexOf("\"},");
+                                        String test_data = response[0].substring(index_1, index_2+2);
+
+                                        user = g.fromJson(test_data, User.class);
+
+                                        Log.i("TEST_DATA", test_data);
+                                    }
+                                    catch (Throwable th){
+                                        Log.e("ERROR", th.toString());
+                                    }
+
+
+
                                     Log.d("LIST_DOCUMENTS", JsonExtensionsKt.toJson(o));
+                                    Log.d("USER", user.name);
                                 }
                             } catch (Throwable th) {
                                 Log.e("ERROR", th.toString());
@@ -139,24 +158,5 @@ public class AppWriterHandler {
         catch (Throwable th){
             Log.e("ERROR", th.toString());
         }
-
-        return response[0];
-    }
-
-    public User getUserData (){
-        User user = new User();
-        //TODO разобраться с многопоточностью, чтобы не было ссылок на NULL
-        try{
-            Integer index_1 = json.indexOf("{\"name");
-            Integer index_2 = json.indexOf("\"},");
-            String test_data = json.substring(index_1, index_2+2);
-
-            Log.i("TEST_DATA", test_data);
-            //databases.getDocument(databaseID, user_collectionID,*/
-        }
-        catch (Throwable th){
-            Log.e("ERROR", th.toString());
-        }
-        return user;
     }
 }

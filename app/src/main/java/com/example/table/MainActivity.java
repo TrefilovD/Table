@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testMessage (View view){
-       awh.getUserDocumentsByUserID();
+       awh.getUserDataByUserID();
         /*Client client = new Client(getApplicationContext())
                 .setEndpoint("http://tableapp.online:8111/v1")
                 .setProject("6356860bb84da9132dfd");
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testUpdate(View view){
-        awh.getUserData();
+        //awh.getUserData();
         /*Client client = new Client(getApplicationContext())
                 .setEndpoint("http://tableapp.online:8111/v1")
                 .setProject("6356860bb84da9132dfd");
