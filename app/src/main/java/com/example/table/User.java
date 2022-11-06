@@ -14,6 +14,7 @@ public class User {
     private Integer [] currentEvents;
     private String phone;
     private String sex;
+    private String userID;
 
     public User(){};
 
@@ -42,6 +43,14 @@ public class User {
         this.currentEvents = currentEvents;
         this.phone = phone;
         this.sex = sex;
+    }
+
+    public String getUserID (){
+        return this.userID;
+    }
+
+    public void setUserID(String userID){
+        this.userID = userID;
     }
 }
 

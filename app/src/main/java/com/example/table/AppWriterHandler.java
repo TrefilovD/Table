@@ -61,12 +61,10 @@ public class AppWriterHandler {
         this.account = new Account(client);
     };
 
-    public Session authorise(String email, String password){
-
-        Session[] session = new Session[1];
+    public void authorise(String email, String password){
 
         try{
-            account.createEmailSession(
+            this.account.createEmailSession(
                     email,
                     password,
                     new Continuation<>() {
@@ -83,11 +81,11 @@ public class AppWriterHandler {
                                     Result.Failure failure = (Result.Failure) o;
                                     throw failure.exception;
                                 } else {
-                                    session[0] = (Session) o;
-                                    Log.d("AUTHORISE_SUCCESS", JsonExtensionsKt.toJson(session[0]));
+                                    session = (Session) o;
+                                    Log.d("AUTHORISE_SUCCESS", JsonExtensionsKt.toJson(session));
 
                                     Gson g = new Gson();
-                                    AuthorisationData ad = g.fromJson(JsonExtensionsKt.toJson(session[0]), AuthorisationData.class);
+                                    AuthorisationData ad = g.fromJson(JsonExtensionsKt.toJson(session), AuthorisationData.class);
                                     userID = ad.getUserID();
                                     Log.i("TEST_AD", ad.getUserID());
                                 }
@@ -100,9 +98,6 @@ public class AppWriterHandler {
         catch (Throwable th){
             Log.e("ERROR_SESSION", th.toString());
         }
-
-        this.session = session[0];
-        return session[0];
     }
 
     public void getUserDataByUserID(){
