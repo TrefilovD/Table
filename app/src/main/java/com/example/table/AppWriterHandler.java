@@ -3,8 +3,7 @@ package com.example.table;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.table.backend_schemes.AuthorisationData;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +13,6 @@ import java.util.Collections;
 import io.appwrite.Client;
 import io.appwrite.Query;
 import io.appwrite.extensions.JsonExtensionsKt;
-import io.appwrite.models.DocumentList;
 import io.appwrite.models.Session;
 import io.appwrite.services.Account;
 import io.appwrite.services.Databases;
@@ -48,7 +46,7 @@ public class AppWriterHandler {
     private final Databases databases;
     private final Account account;
 
-    public User user;
+    public UserData user;
 
     private String userID;
 
@@ -83,7 +81,6 @@ public class AppWriterHandler {
                                 } else {
                                     session = (Session) o;
                                     Log.d("AUTHORISE_SUCCESS", JsonExtensionsKt.toJson(session));
-
                                     Gson g = new Gson();
                                     AuthorisationData ad = g.fromJson(JsonExtensionsKt.toJson(session), AuthorisationData.class);
                                     userID = ad.getUserID();
@@ -131,7 +128,7 @@ public class AppWriterHandler {
                                         Integer index_2 = response[0].indexOf("\"},");
                                         String test_data = response[0].substring(index_1, index_2+2);
 
-                                        user = g.fromJson(test_data, User.class);
+                                        user = g.fromJson(test_data, UserData.class);
 
                                         Log.i("TEST_DATA", test_data);
                                     }

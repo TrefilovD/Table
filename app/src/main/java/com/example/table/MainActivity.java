@@ -1,7 +1,9 @@
 package com.example.table;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import org.jetbrains.annotations.NotNull;
@@ -22,31 +24,67 @@ import com.google.gson.Gson;
 
 
 public class MainActivity extends AppCompatActivity {
+    TableApp myApp;
 
-    String json = new String();
-    AppWriterHandler awh;
-    DocumentList dl;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        awh = new AppWriterHandler(getApplicationContext());
+        myApp = (TableApp) getApplicationContext();
+        myApp.appwriteClient = new Client(getApplicationContext())
+                .setEndpoint("http://tableapp.online:8111/v1")
+                .setProject("6356860bb84da9132dfd");
+        Account account = new Account(myApp.appwriteClient);
         try {
-            awh.authorise("alexandro-tolstenko@mail.ru", "12345678");
+            CheckLogin(account);
+        } catch (AppwriteException e) {
+            e.printStackTrace();
         }
-        catch(Throwable th){
-            Log.e("ERROR", th.toString());
-        }
+//        awh = new AppWriterHandler(getApplicationContext());
+//        try {
+//            awh.authorise("alexandro-tolstenko@mail.ru", "12345678");
+//        }
+//        catch(Throwable th){
+//            Log.e("ERROR", th.toString());
+//        }
+    }
+    
+    public void CheckLogin(Account account) throws AppwriteException {
+        account.get(new Continuation<io.appwrite.models.Account>() {
+            @NonNull
+            @Override
+            public CoroutineContext getContext() {
+                return EmptyCoroutineContext.INSTANCE;
+            }
+
+            @Override
+            public void resumeWith(@NonNull Object o) {
+                try {
+                    if (o instanceof Result.Failure) {
+                        Result.Failure failure = (Result.Failure) o;
+                        throw failure.exception;
+                    } else {
+                        io.appwrite.models.Account response = (io.appwrite.models.Account) o;
+                        String json = response.toString();
+                        Log.d("Account get response:", json);
+                    }
+                } catch (Throwable th) {
+                    GoToLoginActivity();
+                    Log.e("Account get ERROR", th.toString());
+                }
+            }
+        });
     }
 
-    public void testMessage (View view){
-       awh.getUserDataByUserID();
+    public void GoToLoginActivity() {
+        Intent intent = new Intent(this, Authorisation_activity.class);
+        startActivity(intent);
+        finish();
     }
 
-    public void testUpdate(View view){
-        awh.getUserDataByUserID();
+    public void GoToAnotherActivity() {
+
     }
 }
 

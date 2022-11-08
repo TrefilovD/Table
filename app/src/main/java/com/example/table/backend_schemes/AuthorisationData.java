@@ -1,4 +1,4 @@
-package com.example.table;
+package com.example.table.backend_schemes;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,6 +1,6 @@
 package com.example.table;
 
-public class User {
+public class UserData {
 
     public String name;
     private String surname;
@@ -16,20 +16,20 @@ public class User {
     private String sex;
     private String userID;
 
-    public User(){};
+    public UserData(){};
 
-    public User(String name,
-                String surname,
-                Integer age,
-                Integer rate,
-                String email,
-                String about,
-                String[] games,
-                String[] hashtags,
-                Integer[] hostedEvents,
-                Integer[] currentEvents,
-                String phone,
-                String sex
+    public UserData(String name,
+                    String surname,
+                    Integer age,
+                    Integer rate,
+                    String email,
+                    String about,
+                    String[] games,
+                    String[] hashtags,
+                    Integer[] hostedEvents,
+                    Integer[] currentEvents,
+                    String phone,
+                    String sex
     ) {
         this.name = name;
         this.surname = surname;
