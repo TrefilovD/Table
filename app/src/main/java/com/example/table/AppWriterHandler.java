@@ -3,20 +3,16 @@ package com.example.table;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.table.backend_schemes.AuthorisationData;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
-import java.util.Map;
 
 import io.appwrite.Client;
 import io.appwrite.Query;
 import io.appwrite.extensions.JsonExtensionsKt;
-import io.appwrite.models.Document;
-import io.appwrite.models.DocumentList;
 import io.appwrite.models.Session;
 import io.appwrite.services.Account;
 import io.appwrite.services.Databases;
@@ -50,7 +46,7 @@ public class AppWriterHandler {
     private final Databases databases;
     private final Account account;
 
-    public User user;
+    public UserData user;
 
     private String userID;
 
@@ -66,7 +62,7 @@ public class AppWriterHandler {
     public void authorise(String email, String password){
 
         try{
-            account.createEmailSession(
+            this.account.createEmailSession(
                     email,
                     password,
                     new Continuation<>() {
@@ -85,12 +81,10 @@ public class AppWriterHandler {
                                 } else {
                                     session = (Session) o;
                                     Log.d("AUTHORISE_SUCCESS", JsonExtensionsKt.toJson(session));
-
                                     Gson g = new Gson();
                                     AuthorisationData ad = g.fromJson(JsonExtensionsKt.toJson(session), AuthorisationData.class);
                                     userID = ad.getUserID();
                                     Log.i("TEST_AD", ad.getUserID());
-                                    Log.i("TEST_SESSION",session.getUserId());
                                 }
                             } catch (Throwable th) {
                                 Log.e("ERROR", th.toString());
@@ -126,18 +120,6 @@ public class AppWriterHandler {
                                     throw failure.exception;
                                 } else {
                                     response[0] = JsonExtensionsKt.toJson(o);
-                                    DocumentList dl = (DocumentList) o;
-
-                                    try{
-
-                                        //TODO Дотестить встроенный парсинг
-                                        Document a = dl.getDocuments().get(0);
-                                        Map<String, Object> test_a = a.getData();
-                                        Log.i("TEST_DL", (String) test_a.get("name"));
-                                    }
-                                    catch (Throwable th){
-                                        Log.e("ERROR", th.toString());
-                                    }
 
                                     Gson g = new Gson();
 
@@ -146,7 +128,7 @@ public class AppWriterHandler {
                                         Integer index_2 = response[0].indexOf("\"},");
                                         String test_data = response[0].substring(index_1, index_2+2);
 
-                                        user = g.fromJson(test_data, User.class);
+                                        user = g.fromJson(test_data, UserData.class);
 
                                         Log.i("TEST_DATA", test_data);
                                     }
