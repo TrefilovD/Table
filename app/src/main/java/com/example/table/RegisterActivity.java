@@ -9,9 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.table.backend_schemes.AuthorisationData;
-import com.google.gson.Gson;
-
 import org.jetbrains.annotations.NotNull;
 
 import io.appwrite.exceptions.AppwriteException;
@@ -22,7 +19,6 @@ import kotlin.Result;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
-import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity {
     TableApp myApp;
@@ -112,8 +108,8 @@ public class RegisterActivity extends AppCompatActivity {
                         Result.Failure failure = (Result.Failure) o;
                         throw failure.exception;
                     } else {
-                        Session session = (Session) o;
-                        Log.d("AUTHORISE_SUCCESS", JsonExtensionsKt.toJson(session));
+                        myApp.session = (Session) o;
+                        Log.d("AUTHORISE_SUCCESS", JsonExtensionsKt.toJson(myApp.session));
                         GoToRegistrationStep2(email,password,name,surname, account.getId());
                     }
                 } catch (Throwable th) {
@@ -138,7 +134,6 @@ public class RegisterActivity extends AppCompatActivity {
         intent.putExtra("accountId", accountId);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
-
     }
 
 }
