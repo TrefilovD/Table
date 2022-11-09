@@ -9,11 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.table.backend_schemes.AuthorisationData;
-import com.google.gson.Gson;
-
 import io.appwrite.exceptions.AppwriteException;
-import io.appwrite.extensions.JsonExtensionsKt;
 import io.appwrite.models.Session;
 import io.appwrite.services.Account;
 import kotlin.Result;
@@ -53,12 +49,8 @@ public class Authorisation_activity extends AppCompatActivity {
                         Result.Failure failure = (Result.Failure) o;
                         throw failure.exception;
                     } else {
-                        Session session = (Session) o;
-                        Log.d("AUTHORISE_SUCCESS", JsonExtensionsKt.toJson(session));
-                        Gson g = new Gson();
-                        AuthorisationData ad = g.fromJson(JsonExtensionsKt.toJson(session), AuthorisationData.class);
-                        String userID = ad.getUserID();
-                        Log.i("TEST_AD userId", userID);
+                        myApp.session = (Session) o;
+                        Log.d("AUTHORISE_SUCCESS", myApp.session.getUserId());
                     }
                 } catch (Throwable th) {
                     Log.e("LOGINERROR", th.toString());

@@ -3,7 +3,6 @@ package com.example.table;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.table.backend_schemes.AuthorisationData;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -57,7 +56,7 @@ public class AppWriterHandler {
 
         this.databases = new Databases(client);
         this.account = new Account(client);
-    };
+    }
 
     public void authorise(String email, String password){
 
@@ -82,9 +81,9 @@ public class AppWriterHandler {
                                     session = (Session) o;
                                     Log.d("AUTHORISE_SUCCESS", JsonExtensionsKt.toJson(session));
                                     Gson g = new Gson();
-                                    AuthorisationData ad = g.fromJson(JsonExtensionsKt.toJson(session), AuthorisationData.class);
-                                    userID = ad.getUserID();
-                                    Log.i("TEST_AD", ad.getUserID());
+                                    //AuthorisationData ad = g.fromJson(JsonExtensionsKt.toJson(session), AuthorisationData.class);
+                                    //userID = ad.getUserID();
+                                    //Log.i("TEST_AD", ad.getUserID());
                                 }
                             } catch (Throwable th) {
                                 Log.e("ERROR", th.toString());

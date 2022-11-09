@@ -41,13 +41,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (AppwriteException e) {
             e.printStackTrace();
         }
-//        awh = new AppWriterHandler(getApplicationContext());
-//        try {
-//            awh.authorise("alexandro-tolstenko@mail.ru", "12345678");
-//        }
-//        catch(Throwable th){
-//            Log.e("ERROR", th.toString());
-//        }
     }
     
     public void CheckLogin(Account account) throws AppwriteException {
