@@ -10,10 +10,12 @@ import com.google.gson.Gson;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
+import java.util.Map;
 
 import io.appwrite.Client;
 import io.appwrite.Query;
 import io.appwrite.extensions.JsonExtensionsKt;
+import io.appwrite.models.Document;
 import io.appwrite.models.DocumentList;
 import io.appwrite.models.Session;
 import io.appwrite.services.Account;
@@ -64,7 +66,7 @@ public class AppWriterHandler {
     public void authorise(String email, String password){
 
         try{
-            this.account.createEmailSession(
+            account.createEmailSession(
                     email,
                     password,
                     new Continuation<>() {
@@ -88,6 +90,7 @@ public class AppWriterHandler {
                                     AuthorisationData ad = g.fromJson(JsonExtensionsKt.toJson(session), AuthorisationData.class);
                                     userID = ad.getUserID();
                                     Log.i("TEST_AD", ad.getUserID());
+                                    Log.i("TEST_SESSION",session.getUserId());
                                 }
                             } catch (Throwable th) {
                                 Log.e("ERROR", th.toString());
@@ -123,6 +126,18 @@ public class AppWriterHandler {
                                     throw failure.exception;
                                 } else {
                                     response[0] = JsonExtensionsKt.toJson(o);
+                                    DocumentList dl = (DocumentList) o;
+
+                                    try{
+
+                                        //TODO Дотестить встроенный парсинг
+                                        Document a = dl.getDocuments().get(0);
+                                        Map<String, Object> test_a = a.getData();
+                                        Log.i("TEST_DL", (String) test_a.get("name"));
+                                    }
+                                    catch (Throwable th){
+                                        Log.e("ERROR", th.toString());
+                                    }
 
                                     Gson g = new Gson();
 
