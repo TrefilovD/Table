@@ -24,6 +24,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/button_strelka"
+            android:clickable="true"
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
 
         </Button>
@@ -445,6 +446,8 @@
             android:background="@drawable/rounded_button"
             android:text="@string/create"
             android:textColor="@color/darknotes"
+            android:textAllCaps="false"
+            android:clickable="true"
             />
     </RelativeLayout>
 
