@@ -80,33 +80,28 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
 
     </Button>
-    <Button
-        android:id="@+id/button_forgetPassword"
+    <TextView
+        android:id="@+id/forgetPassword"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:text="@string/forgetPassword"
         android:layout_below="@id/buttonVxod"
         android:layout_alignLeft="@id/buttonVxod"
         android:textColor="@color/darknotes"
         android:textSize="11sp"
         android:layout_marginTop="10dp"
-        android:background="@null"
-        android:textAllCaps="false"
         >
-
-    </Button>
-    <Button
-        android:id="@+id/button_noAcc"
+    </TextView>
+    <TextView
+        android:id="@+id/noAcc"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:text="@string/noAccount"
         android:layout_below="@id/buttonVxod"
         android:layout_alignRight="@id/buttonVxod"
         android:textColor="@color/darknotes"
         android:textSize="11sp"
         android:layout_marginTop="10dp"
-        android:background="@null"
-        android:textAllCaps="false">
-
-    </Button>
+        >
+    </TextView>
 </RelativeLayout>

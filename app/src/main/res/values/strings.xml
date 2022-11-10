@@ -51,4 +51,9 @@
     <string name="personal_info">Личная информация</string>
     <string name="help">Помощь</string>
     <string name="last_events">Прошедшие мероприятия</string>
+    <string name="experience_of_events">Опыт мероприятий</string>
+    <string name="Organizator">Организатор: </string>
+    <string name="uchastnik">Участник: </string>
+    <string name="svyaz">Связь</string>
+    <string name="elektron_adres">Электронный адрес</string>
 </resources>
