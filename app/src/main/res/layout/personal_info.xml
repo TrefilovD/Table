@@ -9,8 +9,9 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/photo_personalinfo"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/personalphoto_card"
             android:layout_width="110dp"
             android:layout_height="110dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -18,15 +19,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             android:layout_marginTop="40dp"
-            android:background="@drawable/round_photo"
-            >
-        </ImageView>
+            app:cardCornerRadius="60dp">
+            <ImageView
+                android:id="@+id/personal_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                >
+            </ImageView>
+        </androidx.cardview.widget.CardView>
+
+
         <TextView
             android:id="@+id/name_personalinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/photo_personalinfo"
-            app:layout_constraintTop_toTopOf="@id/photo_personalinfo"
+            app:layout_constraintStart_toEndOf="@id/personalphoto_card"
+            app:layout_constraintTop_toTopOf="@id/personalphoto_card"
             android:layout_marginTop="18dp"
             android:layout_marginLeft="20dp"
             android:text="@string/name"
@@ -39,7 +51,7 @@
             android:id="@+id/surname_personalinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/photo_personalinfo"
+            app:layout_constraintStart_toEndOf="@id/personalphoto_card"
             app:layout_constraintTop_toBottomOf="@id/name_personalinfo"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="20dp"
@@ -53,7 +65,7 @@
             android:id="@+id/age_personalinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/photo_personalinfo"
+            app:layout_constraintStart_toEndOf="@id/personalphoto_card"
             app:layout_constraintTop_toBottomOf="@id/surname_personalinfo"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="20dp"
@@ -66,8 +78,8 @@
             android:id="@+id/experiensTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/photo_personalinfo"
-            app:layout_constraintTop_toBottomOf="@id/photo_personalinfo"
+            app:layout_constraintStart_toStartOf="@id/personalphoto_card"
+            app:layout_constraintTop_toBottomOf="@id/personalphoto_card"
             android:layout_marginTop="30dp"
             android:text="@string/experience_of_events"
             android:fontFamily="@font/roboto_regular"
@@ -77,8 +89,8 @@
         </TextView>
         <TextView
             android:id="@+id/rating_personainfo"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
             app:layout_constraintStart_toStartOf="@+id/experiensTextView"
             app:layout_constraintTop_toBottomOf="@+id/experiensTextView"
             android:layout_marginTop="10dp"
@@ -142,7 +154,7 @@
             android:id="@+id/aboutmyselfTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/photo_personalinfo"
+            app:layout_constraintStart_toStartOf="@id/personalphoto_card"
             app:layout_constraintTop_toBottomOf="@id/rating_personainfo"
             android:layout_marginTop="30dp"
             android:text="@string/tellaboutyourself3"
@@ -174,28 +186,22 @@
             android:textSize="20sp"
             >
         </TextView>
-        <androidx.constraintlayout.helper.widget.Flow
-            android:id="@+id/cardswithgames_personalinfo"
+        <TextView
+            android:id="@+id/lovelygames_personalinfo"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/lovelygamesTextView"
-            app:layout_constraintTop_toBottomOf="@+id/lovelygamesTextView"
+            app:layout_constraintTop_toBottomOf="@id/lovelygamesTextView"
             android:layout_marginTop="10dp"
-            app:flow_wrapMode="chain"
-            app:flow_verticalGap="4dp"
-            app:flow_horizontalGap="4dp"
-            app:layout_constraintHorizontal_bias="0"
-            app:flow_horizontalStyle="packed"
+            android:textSize="15sp"
             >
-
-        </androidx.constraintlayout.helper.widget.Flow>
-
+        </TextView>
         <TextView
             android:id="@+id/hashtagsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/cardswithgames_personalinfo"
-            app:layout_constraintTop_toBottomOf="@id/cardswithgames_personalinfo"
+            app:layout_constraintStart_toStartOf="@id/lovelygames_personalinfo"
+            app:layout_constraintTop_toBottomOf="@id/lovelygames_personalinfo"
             android:layout_marginTop="20dp"
             android:text="@string/hashtags1"
             android:fontFamily="@font/roboto_regular"
@@ -203,27 +209,23 @@
             android:textSize="20sp"
             >
         </TextView>
-        <androidx.constraintlayout.helper.widget.Flow
-            android:id="@+id/cardswithhashtags_personalinfo"
+        <TextView
+            android:id="@+id/hashtags_personalinfo"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/hashtagsTextView"
-            app:layout_constraintTop_toBottomOf="@+id/hashtagsTextView"
+            app:layout_constraintTop_toBottomOf="@id/hashtagsTextView"
             android:layout_marginTop="10dp"
-            app:flow_wrapMode="chain"
-            app:flow_verticalGap="4dp"
-            app:flow_horizontalGap="4dp"
-            app:layout_constraintHorizontal_bias="0"
-            app:flow_horizontalStyle="packed"
+            android:textSize="15sp"
             >
+        </TextView>
 
-        </androidx.constraintlayout.helper.widget.Flow>
         <TextView
             android:id="@+id/svyazTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/cardswithhashtags_personalinfo"
-            app:layout_constraintTop_toBottomOf="@id/cardswithhashtags_personalinfo"
+            app:layout_constraintStart_toStartOf="@id/hashtags_personalinfo"
+            app:layout_constraintTop_toBottomOf="@id/hashtags_personalinfo"
             android:layout_marginTop="20dp"
             android:text="@string/svyaz"
             android:fontFamily="@font/roboto_regular"
@@ -281,15 +283,17 @@
             android:textSize="12sp"
             >
         </TextView>
-        <Button
+        <ImageButton
             android:id="@+id/editButton"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/photo_personalinfo"
+            app:layout_constraintTop_toTopOf="@id/personalphoto_card"
             android:layout_marginRight="30dp"
+            android:src="@drawable/edit_icon"
+            android:background="@null"
             >
-        </Button>
+        </ImageButton>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

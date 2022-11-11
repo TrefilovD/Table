@@ -56,4 +56,12 @@
     <string name="uchastnik">Участник: </string>
     <string name="svyaz">Связь</string>
     <string name="elektron_adres">Электронный адрес</string>
+    <string name="edit_personal">Редактирование личной информации</string>
+    <string name="save">Сохранить</string>
+    <string name="dont_show">Не показываем другим</string>
+    <string-array name="sex_items">
+        <item></item>
+        <item>Женский</item>
+        <item>Мужской</item>
+    </string-array>
 </resources>
