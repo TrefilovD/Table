@@ -59,6 +59,10 @@
     <string name="edit_personal">Редактирование личной информации</string>
     <string name="save">Сохранить</string>
     <string name="dont_show">Не показываем другим</string>
+    <string name="take_part">Участвовать</string>
+    <string name="already_take_part">уже участвуют</string>
+    <string name="station_metro">Станция метро</string>
+    <string name="details_event">Детали мероприятия</string>
     <string-array name="sex_items">
         <item></item>
         <item>Женский</item>
