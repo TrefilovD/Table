@@ -2,7 +2,8 @@
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/background_table">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
@@ -18,7 +19,7 @@ android:layout_height="match_parent"
     android:textColor="@color/darknotes"
     android:textSize="20sp"
     android:layout_marginTop="69dp"
-    android:layout_marginLeft="37dp"
+    android:layout_marginLeft="50dp"
 
     >
 </TextView>

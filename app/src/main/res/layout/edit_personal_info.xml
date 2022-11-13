@@ -36,7 +36,7 @@
             android:layout_height="30dp"
             app:layout_constraintEnd_toStartOf="@id/editinfoTextView"
             app:layout_constraintTop_toBottomOf="@id/editinfoTextView"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="5dp"
             android:src="@drawable/edit_image_icon"
             android:background="@null"
             >

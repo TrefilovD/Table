@@ -189,6 +189,7 @@
                 android:textColor="@color/green"
                 android:textSize="20sp"
                 android:fontFamily="@font/roboto_regular"
+                android:text="@string/example_number"
                 >
             </TextView>
             <TextView

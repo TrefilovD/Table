@@ -63,6 +63,9 @@
     <string name="already_take_part">уже участвуют</string>
     <string name="station_metro">Станция метро</string>
     <string name="details_event">Детали мероприятия</string>
+    <string name="go_to_chat">Перейти в чат</string>
+    <string name="example_number">16/20</string>
+    <string name="cancel_participate">Отменить участие</string>
     <string-array name="sex_items">
         <item></item>
         <item>Женский</item>
