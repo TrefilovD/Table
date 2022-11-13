@@ -62,14 +62,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="20dp"
         android:background="@drawable/state_list_button"
+        android:clickable="true"
+        android:fontFamily="@font/roboto_regular"
+        android:onClick="signInClicked"
         android:text="@string/entry"
         android:textColor="@color/darknotes"
+
         android:fontFamily="@font/roboto_regular"
         android:textSize="18sp"
         android:clickable="true"
         android:textAllCaps="false"
          >
     </Button>
+
 
     <ImageButton
 
@@ -99,12 +104,11 @@
         android:id="@+id/noAcc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/noAccount"
         android:layout_below="@id/buttonVxod"
         android:layout_alignRight="@id/buttonVxod"
-        android:textColor="@color/darknotes"
-        android:textSize="11sp"
         android:layout_marginTop="10dp"
-        >
-    </TextView>
+        android:onClick="NoAccountButtonClicked"
+        android:text="@string/noAccount"
+        android:textColor="@color/darknotes"
+        android:textSize="11sp"></TextView>
 </RelativeLayout>

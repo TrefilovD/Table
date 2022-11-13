@@ -15,7 +15,7 @@
     </ImageButton>
 
     <EditText
-        android:id="@+id/email3"
+        android:id="@+id/register_email"
         android:layout_width="290dp"
         android:layout_height="45dp"
         android:layout_centerInParent="true"
@@ -26,10 +26,10 @@
 
     </EditText>
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/register_name"
         android:layout_width="290dp"
         android:layout_height="45dp"
-        android:layout_above="@id/surname"
+        android:layout_above="@id/register_surname"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textSize="18sp"
@@ -39,11 +39,11 @@
 
     </EditText>
     <EditText
-        android:id="@+id/surname"
+        android:id="@+id/register_surname"
         android:layout_width="290dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
-        android:layout_above="@id/email3"
+        android:layout_above="@id/register_email"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_edittext"
         android:hint="@string/surname"
@@ -52,43 +52,49 @@
 
     </EditText>
     <EditText
-        android:id="@+id/entryPassword"
+        android:id="@+id/register_password"
         android:layout_width="290dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_edittext"
-        android:layout_below="@id/email3"
+        android:layout_below="@id/register_email"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textSize="18sp">
 
     </EditText>
     <EditText
-        android:id="@+id/confirmPassword"
+        android:id="@+id/register_password_confirmation"
         android:layout_width="290dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_edittext"
         android:hint="@string/confirmPassword"
+
         android:layout_below="@id/entryPassword"
         android:inputType="textPassword"
         android:textSize="18sp">
 
+
     </EditText>
+
     <Button
-        android:id="@+id/buttonGotovo"
+        android:id="@+id/register_done_button"
         android:layout_width="wrap_content"
-        android:layout_height="39dp"
-        android:layout_below="@id/confirmPassword"
-        android:layout_alignRight="@+id/confirmPassword"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_password_confirmation"
+        android:layout_alignRight="@+id/register_password_confirmation"
         android:layout_marginVertical="20dp"
         android:background="@drawable/rounded_button"
+        android:onClick="RegisterButtonClicked"
         android:text="@string/Ready"
+
         android:textColor="@color/darknotes"
         android:textAllCaps="false"
         />
+
     <TextView
         android:id="@+id/textRegister"
         android:layout_width="235dp"
@@ -96,7 +102,7 @@
         android:layout_marginBottom="10dp"
         android:text="@string/register"
         android:textColor="@color/darknotes"
-        android:layout_above="@id/name"
+        android:layout_above="@id/register_name"
         android:layout_marginVertical="20dp"
         android:layout_alignParentLeft="true"
         style="@style/HeadersText"
