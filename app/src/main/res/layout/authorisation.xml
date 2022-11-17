@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_table">
 
 
     <EditText
@@ -14,7 +15,8 @@
         android:background="@drawable/rounded_edittext"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        tools:ignore="TouchTargetSizeCheck">
+        tools:ignore="TouchTargetSizeCheck"
+        >
 
     </EditText>
 
@@ -65,12 +67,19 @@
         android:onClick="signInClicked"
         android:text="@string/entry"
         android:textColor="@color/darknotes"
-        android:textSize="15sp"></Button>
 
-    <Button
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="18sp"
+        android:clickable="true"
+        android:textAllCaps="false"
+         >
+    </Button>
+
+
+    <ImageButton
 
         android:id="@+id/strelka1"
-
+        android:src="@drawable/strelka_icon"
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:layout_marginLeft="20dp"
@@ -78,20 +87,19 @@
         android:background="@drawable/button_strelka"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
 
-    </Button>
-<TextView
-    android:id="@+id/forgetPassword"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/forgetPassword"
-    android:layout_below="@id/buttonVxod"
-    android:layout_alignLeft="@id/buttonVxod"
-    android:textColor="@color/darknotes"
-    android:textSize="11sp"
-    android:layout_marginTop="10dp"
-    >
-</TextView>
-
+    </ImageButton>
+    <TextView
+        android:id="@+id/forgetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgetPassword"
+        android:layout_below="@id/buttonVxod"
+        android:layout_alignLeft="@id/buttonVxod"
+        android:textColor="@color/darknotes"
+        android:textSize="11sp"
+        android:layout_marginTop="10dp"
+        >
+    </TextView>
     <TextView
         android:id="@+id/noAcc"
         android:layout_width="wrap_content"

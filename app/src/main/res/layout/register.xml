@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
+    android:layout_height="match_parent"
+    android:background="@color/background_table">
+    <ImageButton
         android:id="@+id/strelka3"
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/button_strelka"
+        android:src="@drawable/strelka_icon"
         >
-    </Button>
+    </ImageButton>
 
     <EditText
         android:id="@+id/register_email"
@@ -30,6 +32,7 @@
         android:layout_above="@id/register_surname"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:textSize="18sp"
         android:background="@drawable/rounded_edittext"
         android:hint="@string/name"
         android:inputType="textPersonName">
@@ -44,7 +47,8 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_edittext"
         android:hint="@string/surname"
-        android:inputType="textPersonName">
+        android:inputType="textPersonName"
+        android:textSize="18sp">
 
     </EditText>
     <EditText
@@ -56,7 +60,8 @@
         android:background="@drawable/rounded_edittext"
         android:layout_below="@id/register_email"
         android:hint="@string/password"
-        android:inputType="textPassword">
+        android:inputType="textPassword"
+        android:textSize="18sp">
 
     </EditText>
     <EditText
@@ -67,8 +72,11 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_edittext"
         android:hint="@string/confirmPassword"
-        android:layout_below="@id/register_password"
-        android:inputType="textPassword">
+
+        android:layout_below="@id/entryPassword"
+        android:inputType="textPassword"
+        android:textSize="18sp">
+
 
     </EditText>
 
@@ -82,7 +90,11 @@
         android:background="@drawable/rounded_button"
         android:onClick="RegisterButtonClicked"
         android:text="@string/Ready"
-        android:textColor="@color/darknotes" />
+
+        android:textColor="@color/darknotes"
+        android:textAllCaps="false"
+        />
+
     <TextView
         android:id="@+id/textRegister"
         android:layout_width="235dp"
