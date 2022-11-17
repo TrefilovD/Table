@@ -1,5 +1,7 @@
 package com.example.table;
 
+import io.appwrite.models.DocumentList;
+
 public class UserData {
 
     public String name;

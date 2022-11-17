@@ -11,4 +11,9 @@ public class RegisterStep2_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_step2);
     }
+
+    //creating document with user info in DB
+    public void creatingUserDocument(){
+
+    }
 }

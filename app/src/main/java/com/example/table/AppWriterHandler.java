@@ -8,10 +8,13 @@ import com.google.gson.Gson;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
+import java.util.Map;
 
 import io.appwrite.Client;
 import io.appwrite.Query;
 import io.appwrite.extensions.JsonExtensionsKt;
+import io.appwrite.models.Document;
+import io.appwrite.models.DocumentList;
 import io.appwrite.models.Session;
 import io.appwrite.services.Account;
 import io.appwrite.services.Databases;
@@ -118,24 +121,18 @@ public class AppWriterHandler {
                                     Result.Failure failure = (Result.Failure) o;
                                     throw failure.exception;
                                 } else {
-                                    response[0] = JsonExtensionsKt.toJson(o);
 
-                                    Gson g = new Gson();
+                                    DocumentList dl = (DocumentList) o;
 
                                     try{
-                                        Integer index_1 = response[0].indexOf("{\"name");
-                                        Integer index_2 = response[0].indexOf("\"},");
-                                        String test_data = response[0].substring(index_1, index_2+2);
-
-                                        user = g.fromJson(test_data, UserData.class);
-
-                                        Log.i("TEST_DATA", test_data);
+                                        //
+                                        Document a = dl.getDocuments().get(0);
+                                        Map<String, Object> test_a = a.getData();
+                                        Log.i("TEST_DL", (String) test_a.get("name"));
                                     }
                                     catch (Throwable th){
                                         Log.e("ERROR", th.toString());
                                     }
-
-
 
                                     Log.d("LIST_DOCUMENTS", JsonExtensionsKt.toJson(o));
                                     Log.d("USER", user.name);
