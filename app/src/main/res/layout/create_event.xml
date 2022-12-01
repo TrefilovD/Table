@@ -426,6 +426,7 @@
             android:layout_below="@+id/hint_hashtagTextV"
             android:layout_marginTop="10dp"
             android:layout_alignLeft="@+id/nazvanieTextV"
+            android:background="@drawable/rounded_edittext"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selection_hashtag"
             >

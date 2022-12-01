@@ -32,11 +32,11 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void RegisterButtonClicked(View view) throws AppwriteException {
-        TextView nameField = (TextView) findViewById(R.id.register_name);
-        TextView surnameField = (TextView) findViewById(R.id.register_surname);
-        TextView emailField = (TextView) findViewById(R.id.register_email);
-        TextView passwordField = (TextView) findViewById(R.id.register_password);
-        TextView passwordConfirmField = (TextView) findViewById(R.id.register_password_confirmation);
+        TextView nameField = (TextView) findViewById(R.id.name);
+        TextView surnameField = (TextView) findViewById(R.id.surname);
+        TextView emailField = (TextView) findViewById(R.id.email);
+        TextView passwordField = (TextView) findViewById(R.id.password);
+        TextView passwordConfirmField = (TextView) findViewById(R.id.confirmPassword);
         String name = nameField.getText().toString();
         String surname = surnameField.getText().toString();
         String email = emailField.getText().toString();
