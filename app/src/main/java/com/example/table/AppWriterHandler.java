@@ -21,7 +21,7 @@ import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
 
 public class AppWriterHandler {
-
+    //костыль
     //параметры, которые нужны для обращения к серверу
     private static final String endpointID;
     private static final String projectID;

@@ -20,7 +20,7 @@ import kotlin.coroutines.EmptyCoroutineContext;
 
 public class Authorisation_activity extends AppCompatActivity {
     private TableApp myApp;
-
+    //костыль
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
