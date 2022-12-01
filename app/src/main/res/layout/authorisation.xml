@@ -99,12 +99,11 @@
         android:id="@+id/noAcc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/noAccount"
         android:layout_below="@id/buttonVxod"
         android:layout_alignRight="@id/buttonVxod"
-        android:textColor="@color/darknotes"
-        android:textSize="11sp"
         android:layout_marginTop="10dp"
-        >
-    </TextView>
+        android:onClick="NoAccountButtonClicked"
+        android:text="@string/noAccount"
+        android:textColor="@color/darknotes"
+        android:textSize="11sp"></TextView>
 </RelativeLayout>
