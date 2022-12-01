@@ -25,7 +25,7 @@ import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
     TableApp myApp;
-
+    //костыль
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
