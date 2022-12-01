@@ -1,12 +1,16 @@
 package com.example.table;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import org.jetbrains.annotations.NotNull;
 import io.appwrite.Client;
 import io.appwrite.exceptions.AppwriteException;
 import io.appwrite.extensions.JsonExtensionsKt;
+import io.appwrite.models.DocumentList;
 import io.appwrite.models.Session;
 import io.appwrite.services.Account;
 import io.appwrite.services.Databases;
@@ -16,99 +20,64 @@ import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
 import android.view.View;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import com.google.gson.Gson;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    Map<String,String> dictionary = new HashMap<String,String>();
-    String json = new String();
-
+    TableApp myApp;
+    //костыль
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Client client = new Client(getApplicationContext())
+        myApp = (TableApp) getApplicationContext();
+        myApp.appwriteClient = new Client(getApplicationContext())
                 .setEndpoint("http://tableapp.online:8111/v1")
                 .setProject("6356860bb84da9132dfd");
-
-        Account account = new Account(client);
-
+        Account account = new Account(myApp.appwriteClient);
         try {
-            account.createEmailSession("alexandro-tolstenko@mail.ru","12345678", new Continuation<Session>() {
-                @NotNull
-                @Override
-                public CoroutineContext getContext() {
-                    return EmptyCoroutineContext.INSTANCE;
-                }
-
-                @Override
-                public void resumeWith(@NotNull Object o) {
-                    try {
-                        if (o instanceof Result.Failure) {
-                            Result.Failure failure = (Result.Failure) o;
-                            throw failure.exception;
-                        } else {
-                            Session session = (Session) o;
-                            Log.d("RESPONSE", JsonExtensionsKt.toJson(session));
-                        }
-                    } catch (Throwable th) {
-                        Log.e("ERROR", th.toString());
-                    }
-                }
-            });
+            CheckLogin(account);
         } catch (AppwriteException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void CheckLogin(Account account) throws AppwriteException {
+        account.get(new Continuation<io.appwrite.models.Account>() {
+            @NonNull
+            @Override
+            public CoroutineContext getContext() {
+                return EmptyCoroutineContext.INSTANCE;
+            }
 
+            @Override
+            public void resumeWith(@NonNull Object o) {
+                try {
+                    if (o instanceof Result.Failure) {
+                        Result.Failure failure = (Result.Failure) o;
+                        throw failure.exception;
+                    } else {
+                        io.appwrite.models.Account response = (io.appwrite.models.Account) o;
+                        String json = response.toString();
+                        Log.d("Account get response:", json);
+                    }
+                } catch (Throwable th) {
+                    GoToLoginActivity();
+                    Log.e("Account get ERROR", th.toString());
+                }
+            }
+        });
     }
 
-    public void testMessage (View view){
-        Client client = new Client(getApplicationContext())
-                .setEndpoint("http://tableapp.online:8111/v1")
-                .setProject("6356860bb84da9132dfd");
+    public void GoToLoginActivity() {
+        Intent intent = new Intent(this, Authorisation_activity.class);
+        startActivity(intent);
+        finish();
+    }
 
-        Databases databases = new Databases(client);
+    public void GoToAnotherActivity() {
 
-        try {
-            databases.getDocument(
-                    "635abed829e099dfcd5c",
-                    "635abf1ceefe2d36771b",
-                    "635acceac8a727b1f253",
-                    new Continuation<Object>() {
-                        @NotNull
-                        @Override
-                        public CoroutineContext getContext() {
-                            return EmptyCoroutineContext.INSTANCE;
-                        }
-
-                        @Override
-                        public void resumeWith(@NotNull Object o) {
-
-                            try {
-                                if (o instanceof Result.Failure) {
-                                    Result.Failure failure = (Result.Failure) o;
-                                    throw failure.exception;
-                                } else {
-                                    Log.d("RESPONSE", JsonExtensionsKt.toJson(o));
-                                    json = JsonExtensionsKt.toJson(o);
-                                }
-                            } catch (Throwable th) {
-                                Log.e("ERROR", th.toString());
-                            }
-
-
-                        }
-                    }
-            );
-        }
-        catch (Throwable th){
-            Log.e("Error", th.toString());
-        }
     }
 }
 

@@ -15,7 +15,7 @@ public class CreatingEventActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creating_event);
     }
-
+    //костыль
     public void creatingEvent() {
         // функция для кнопки "создать"
         Event event = setInputValues();

@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_table">
 
 
     <EditText
@@ -14,7 +15,8 @@
         android:background="@drawable/rounded_edittext"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        tools:ignore="TouchTargetSizeCheck">
+        tools:ignore="TouchTargetSizeCheck"
+        >
 
     </EditText>
 
@@ -40,7 +42,9 @@
         android:text="@string/entrance"
         style="@style/HeadersText"
         android:textColor="@color/darknotes"
-        android:layout_below="@id/strelka"
+
+        android:layout_below="@id/strelka1"
+
         android:layout_marginTop="90dp"
         android:background="@drawable/pink_rect"
 
@@ -61,13 +65,16 @@
         android:text="@string/entry"
         android:textColor="@color/darknotes"
         android:fontFamily="@font/roboto_regular"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:clickable="true"
-         >
+        android:textAllCaps="false"
+        >
     </Button>
 
-    <Button
-        android:id="@+id/strelka"
+    <ImageButton
+
+        android:id="@+id/strelka1"
+        android:src="@drawable/strelka_icon"
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:layout_marginLeft="20dp"
@@ -75,30 +82,28 @@
         android:background="@drawable/button_strelka"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
 
-    </Button>
-<TextView
-    android:id="@+id/forgetPassword"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/forgetPassword"
-    android:layout_below="@id/buttonVxod"
-    android:layout_alignLeft="@id/buttonVxod"
-    android:textColor="@color/darknotes"
-    android:textSize="11sp"
-    android:layout_marginTop="10dp"
-    >
-</TextView>
-
+    </ImageButton>
     <TextView
-        android:id="@+id/noAcc"
+        android:id="@+id/forgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/noAccount"
+        android:text="@string/forgetPassword"
         android:layout_below="@id/buttonVxod"
-        android:layout_alignRight="@id/buttonVxod"
+        android:layout_alignLeft="@id/buttonVxod"
         android:textColor="@color/darknotes"
         android:textSize="11sp"
         android:layout_marginTop="10dp"
         >
     </TextView>
+    <TextView
+        android:id="@+id/noAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonVxod"
+        android:layout_alignRight="@id/buttonVxod"
+        android:layout_marginTop="10dp"
+        android:onClick="NoAccountButtonClicked"
+        android:text="@string/noAccount"
+        android:textColor="@color/darknotes"
+        android:textSize="11sp"></TextView>
 </RelativeLayout>

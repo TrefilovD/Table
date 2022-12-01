@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class forgetPasswordActivity extends AppCompatActivity {
+public class CreateEvent extends AppCompatActivity {
     //костыль
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forget_password);
+        setContentView(R.layout.create_event);
     }
 }

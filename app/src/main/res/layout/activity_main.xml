@@ -7,28 +7,14 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/test_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/welcome_text"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="286dp"
+        android:text="Welcome"
+        android:textSize="24sp"
+        android:textColor="@color/darknotes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="302dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="6dp"
-        android:text="Button"
-        android:onClick="testMessage"
-        app:layout_constraintBottom_toTopOf="@+id/test_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
