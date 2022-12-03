@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SearchFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/background_table">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/tellaboutu1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tellaboutyourself1"
+                android:textColor="@color/darknotes"
+                android:textSize="20sp"
+                android:layout_marginTop="69dp"
+                android:layout_marginLeft="50dp"
+
+                >
+            </TextView>
+            <TextView
+                android:id="@+id/tellaboutu2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tellaboutyourself2"
+                android:textColor="@color/lightgrey"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:layout_alignLeft="@id/tellaboutu1"
+                android:layout_below="@id/tellaboutu1"
+                >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tellaboutu3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tellaboutu2"
+                android:layout_alignLeft="@id/tellaboutu1"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/tellaboutyourself3"
+                android:textColor="@color/darknotes"
+                android:textSize="18sp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/tellaboutu4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tellaboutyourself4"
+                android:textColor="@color/lightgrey"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:layout_alignLeft="@id/tellaboutu1"
+                android:layout_below="@id/tellaboutu3"
+                >
+            </TextView>
+            <EditText
+                android:id="@+id/editTellaboutU"
+                android:layout_width="300dp"
+                android:layout_height="92dp"
+                android:layout_alignLeft="@id/tellaboutu1"
+                android:layout_below="@id/tellaboutu4"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_edittext"
+                >
+
+            </EditText>
+            <TextView
+                android:id="@+id/loveGame1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lovelygames1"
+                android:textColor="@color/darknotes"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:layout_alignLeft="@id/tellaboutu1"
+                android:layout_below="@id/editTellaboutU"
+                >
+            </TextView>
+            <TextView
+                android:id="@+id/loveGame2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/lovelygames2"
+                android:textColor="@color/lightgrey"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:layout_alignLeft="@id/tellaboutu1"
+                android:layout_below="@id/loveGame1"
+
+                >
+            </TextView>
+            <EditText
+                android:id="@+id/editlovegames"
+                android:layout_width="300dp"
+                android:layout_height="92dp"
+                android:layout_alignLeft="@id/tellaboutu1"
+                android:layout_below="@id/loveGame2"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_edittext"
+                android:drawablePadding="5dp"
+                >
+            </EditText>
+
+            <TextView
+                android:id="@+id/hash1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hashtags1"
+                android:textColor="@color/darknotes"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:layout_alignLeft="@id/tellaboutu1"
+                android:layout_below="@id/editlovegames"
+                >
+            </TextView>
+            <TextView
+                android:id="@+id/hash2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/hashtags2"
+                android:textColor="@color/lightgrey"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:layout_alignLeft="@id/tellaboutu1"
+                android:layout_below="@id/hash1"
+
+                >
+            </TextView>
+            <EditText
+                android:id="@+id/editHash"
+                android:layout_width="300dp"
+                android:layout_height="92dp"
+                android:layout_alignLeft="@id/tellaboutu1"
+                android:layout_below="@id/hash2"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_edittext"
+                android:drawablePadding="5dp"
+                >
+            </EditText>
+
+            <Button
+                android:id="@+id/buttonDaleeRegister2"
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:layout_below="@id/editHash"
+                android:layout_alignRight="@+id/editHash"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/rounded_button"
+                android:text="@string/dalee"
+                android:textColor="@color/darknotes"
+                android:textAllCaps="false"
+                />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>

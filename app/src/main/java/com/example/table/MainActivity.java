@@ -20,12 +20,13 @@ import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
 import android.view.View;
 
+import com.example.table.databinding.ActivityMainBinding;
 import com.google.gson.Gson;
 
 
 public class MainActivity extends AppCompatActivity {
     TableApp myApp;
-    //костыль
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

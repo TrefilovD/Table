@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.table.databinding.ActivityMainBinding;
+import com.example.table.fragments.test_nav_menu;
+
 import io.appwrite.exceptions.AppwriteException;
 import io.appwrite.models.Session;
 import io.appwrite.services.Account;
@@ -20,12 +23,16 @@ import kotlin.coroutines.EmptyCoroutineContext;
 
 public class Authorisation_activity extends AppCompatActivity {
     private TableApp myApp;
-    //костыль
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authorisation);
         myApp = (TableApp) getApplicationContext();
+
+        Intent intent = new Intent(this, test_nav_menu.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
     }
 
     public void signInClicked(View view) throws AppwriteException {
