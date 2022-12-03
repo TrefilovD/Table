@@ -1,6 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
+        android:layout_height="305dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/image_cardOfevent_2"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+            </ImageView>
+            <TextView
+                android:id="@+id/name_cardOfevent_1"
+                android:layout_width="160dp"
+                android:layout_height="44dp"
+                app:layout_constraintTop_toBottomOf="@id/image_cardOfevent_2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="10dp"
+                android:text="@string/example_eventname_card_of_event"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="18sp"
+                android:textColor="@color/darknotes"
+                >
+
+            </TextView>
+            <TextView
+                android:id="@+id/data_cardOfevent_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/name_cardOfevent_1"
+                app:layout_constraintLeft_toLeftOf="@id/name_cardOfevent_1"
+                android:layout_marginTop="10dp"
+                android:text="@string/example_date_card"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="18sp"
+                android:textColor="@color/darknotes"
+                android:background="@color/pink"
+                >
+
+            </TextView>
+            <ImageView
+                android:id="@+id/icon_people_1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintTop_toTopOf="@id/data_cardOfevent_1"
+                app:layout_constraintRight_toLeftOf="@+id/people_cardOfevent_1"
+                android:layout_marginRight="3dp"
+                android:src="@drawable/add_person_icon"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/people_cardOfevent_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/name_cardOfevent_1"
+                app:layout_constraintRight_toRightOf="@id/name_cardOfevent_1"
+                android:layout_marginTop="10dp"
+                android:text="@string/example_people"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="18sp"
+                android:textColor="@color/darknotes"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/time_cardOfevent_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/data_cardOfevent_1"
+                app:layout_constraintLeft_toLeftOf="@id/data_cardOfevent_1"
+                android:layout_marginTop="10dp"
+                android:text="@string/example_time_card"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="18sp"
+                android:textColor="@color/darknotes"
+                android:background="@color/pink"
+                >
+
+            </TextView>
+            <ImageView
+                android:id="@+id/icon_station_metro_1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintTop_toBottomOf="@id/time_cardOfevent_1"
+                app:layout_constraintLeft_toLeftOf="@id/time_cardOfevent_1"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/blue_metro_icon"
+                >
+            </ImageView>
+            <TextView
+                android:id="@+id/metro_cardOfevent_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/time_cardOfevent_1"
+                app:layout_constraintLeft_toRightOf="@id/icon_station_metro_1"
+                android:layout_marginTop="10dp"
+                android:text="@string/example_metro"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="18sp"
+                android:textColor="@color/darknotes"
+                >
+
+            </TextView>
+            <TextView
+                android:id="@+id/price_cardOfevent_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/icon_station_metro_1"
+                app:layout_constraintLeft_toLeftOf="@id/data_cardOfevent_1"
+                android:layout_marginTop="10dp"
+                android:text="500"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="18sp"
+                android:textColor="@color/darknotes"
+                >
+            </TextView>
+            <ImageView
+                android:id="@+id/icon_dengi_1"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                app:layout_constraintTop_toTopOf="@id/price_cardOfevent_1"
+                app:layout_constraintBottom_toBottomOf="@id/price_cardOfevent_1"
+                app:layout_constraintLeft_toRightOf="@id/price_cardOfevent_1"
+                android:layout_marginLeft="3dp"
+                android:src="@drawable/rubl_icon"
+                >
+
+            </ImageView>
+            <Button
+                android:id="@+id/zapisatsya_Button_cardOfevent_1"
+                android:layout_width="92dp"
+                android:layout_height="22dp"
+                app:layout_constraintRight_toRightOf="@id/name_cardOfevent_1"
+                app:layout_constraintTop_toTopOf="@id/price_cardOfevent_1"
+                app:layout_constraintBottom_toBottomOf="@id/price_cardOfevent_1"
+                android:textAllCaps="false"
+                android:text="@string/sign_up"
+                android:textSize="9sp"
+                android:background="@drawable/rounded_button"
+                android:paddingTop="-20dp"
+                android:paddingBottom="-8dp"
+                >
+
+            </Button>
+            
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

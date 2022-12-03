@@ -243,6 +243,8 @@
             android:layout_alignLeft="@+id/nazvanieTextV"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selection_gorod"
+            android:entries="@array/metro_items"
+            android:background="@color/white"
 
             >
         </Spinner>
