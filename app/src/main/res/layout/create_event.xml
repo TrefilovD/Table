@@ -133,6 +133,43 @@
 
             >
         </TextView>
+        <CheckBox
+            android:id="@+id/checkbox_free"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hintKolvo"
+            android:layout_alignLeft="@id/maxTextV"
+            android:layout_marginTop="10dp"
+            android:text="Бесплатно или "
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/darknotes"
+            >
+
+        </CheckBox>
+        <EditText
+            android:id="@+id/price_createEvent"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:layout_toRightOf="@id/checkbox_free"
+            android:layout_alignTop="@id/checkbox_free"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            >
+
+        </EditText>
+        <ImageView
+            android:id="@+id/icon_dengi_2"
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@id/price_createEvent"
+            android:layout_alignTop="@id/price_createEvent"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/rubl_icon"
+            android:layout_marginTop="5dp"
+            >
+        </ImageView>
+        
         <TextView
             android:id="@+id/kogdaTextV"
             android:layout_width="wrap_content"
@@ -140,8 +177,8 @@
             android:text="@string/kogda"
             android:textColor="@color/darknotes"
             android:textSize="18sp"
-            android:layout_below="@id/maxTextV"
-            android:layout_marginTop="22dp"
+            android:layout_below="@id/checkbox_free"
+            android:layout_marginTop="10dp"
             android:layout_alignLeft="@id/nazvanieTextV"
             android:fontFamily="@font/roboto_regular"
             >
@@ -302,6 +339,7 @@
             android:layout_alignLeft="@+id/nazvanieTextV"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selection_metro"
+            android:background="@color/white"
             >
         </Spinner>
         <GridLayout
