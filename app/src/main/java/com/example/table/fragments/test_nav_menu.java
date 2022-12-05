@@ -7,14 +7,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.example.table.fragments.*;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.table.R;
-import com.example.table.databinding.ActivityMainBinding;
 import com.example.table.databinding.TestNavBottomBinding;
 
 public class test_nav_menu extends AppCompatActivity {
 
     TestNavBottomBinding binding;
+
+    Fragment notificationFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -35,7 +38,10 @@ public class test_nav_menu extends AppCompatActivity {
                     Log.i("REPLACED","successfully");
                     break;
                 case R.id.notification_bnv:
-                    replaceFragment(new NotificationFragment());
+                    notificationFragment = new NotificationFragment();
+                    replaceFragment(notificationFragment);
+
+                    Log.i("TEST", "TEST_NAV_MENU");
                     break;
             }
 

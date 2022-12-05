@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_table"
-    tools:context=".fragments.NotificationFragment">
+    android:background="@color/background_table">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/Notification_counter"
-        android:layout_width="wrap_content"
+        android:layout_width="173dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:layout_marginStart="30dp"
@@ -23,15 +15,13 @@
         android:text="@string/notifications_nl"
         android:gravity="center"
         />
-
+    
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:background="@color/background_table"
         />
-    </LinearLayout>
-</FrameLayout>
+
+</LinearLayout>

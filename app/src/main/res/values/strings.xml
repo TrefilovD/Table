@@ -66,6 +66,13 @@
     <string name="go_to_chat">Перейти в чат</string>
     <string name="example_number">16/20</string>
     <string name="cancel_participate">Отменить участие</string>
+    <string name="notifications_nl">Входящие: </string>
+    <string name="notification_txt">"Мафия" в антикафе 12 ярдов</string>
+    <string name="notification_accept_btn">Принять</string>
+    <string name="notification_reject_btn">Отклонить</string>
+    <string name="notification_date_txt">16.11.2022</string>
+    <string name="notification_time_txt">(17:00 - 22:00)</string>
+
     <string-array name="sex_items">
         <item></item>
         <item>Женский</item>

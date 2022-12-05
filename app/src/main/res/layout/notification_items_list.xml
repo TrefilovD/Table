@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginBottom="10sp"
+        app:cardCornerRadius="10px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:id="@+id/image_notification"
+                android:src="@drawable/image_notification"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+            />
+
+            <TextView
+                android:id="@+id/event_name_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@string/notification_txt"
+                android:textSize="20sp"
+                android:textColor="@color/darknotes"
+                />
+
+            <LinearLayout
+                android:layout_marginStart="15sp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/event_date_notification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="@string/notification_date_txt"
+                    android:textColor="@color/darknotes"
+                    />
+
+                <TextView
+                    android:id="@+id/event_time_notification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/notification_time_txt"
+                    android:textColor="@color/darknotes"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="7sp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15sp"
+                android:layout_marginTop="10sp"
+                >
+
+                <ImageView
+                    android:id="@+id/avatar_image_notification"
+                    android:src="@drawable/avatar_notification"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    />
+
+               <LinearLayout
+                   android:orientation="vertical"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="7sp"
+                   >
+
+                   <TextView
+                       android:id="@+id/host_name_notification"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Alexandr Tolstenko"
+                       android:textSize="18sp"
+                       android:textColor="@color/darknotes"
+                       />
+                   <TextView
+                       android:id="@+id/type_of_notification"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Запрос на участие"
+                       android:textSize="16sp"
+                       android:textColor="@color/green"
+                       android:fontFamily="@font/robotobold"
+                       />
+
+               </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="19sp"
+                android:layout_marginBottom="21sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                >
+
+                <Button
+                    android:id="@+id/notification_accept_btn"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darknotes"
+                    android:background="@drawable/rounded_button"
+                    android:text="@string/notification_accept_btn"
+                    android:textSize="15sp"
+                    android:layout_marginEnd="15sp"
+                    />
+
+
+                <Button
+                    android:id="@+id/notification_reject_btn"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/orange_round_solid"
+                    android:textColor="@color/orange"
+                    android:text="@string/notification_reject_btn"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

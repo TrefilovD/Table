@@ -11,4 +11,6 @@ public class TableApp extends Application {
     public Client appwriteClient;
     //public AuthorisationData sessionData;
     public Session session;
+
+
 }
