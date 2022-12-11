@@ -30,6 +30,7 @@
                 android:id="@+id/event_name_notification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp"
                 android:text="@string/notification_txt"
                 android:textSize="20sp"
@@ -126,6 +127,7 @@
                     android:text="@string/notification_accept_btn"
                     android:textSize="15sp"
                     android:layout_marginEnd="15sp"
+                    android:textAllCaps="false"
                     />
 
 
@@ -136,6 +138,7 @@
                     android:background="@drawable/orange_round_solid"
                     android:textColor="@color/orange"
                     android:text="@string/notification_reject_btn"
+                    android:textAllCaps="false"
                     />
             </LinearLayout>
 

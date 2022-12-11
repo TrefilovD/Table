@@ -22,7 +22,11 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_edittext"
         android:hint="@string/email"
-        android:inputType="textEmailAddress">
+        android:inputType="textEmailAddress"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp">
 
     </EditText>
     <EditText
@@ -35,7 +39,11 @@
         android:textSize="18sp"
         android:background="@drawable/rounded_edittext"
         android:hint="@string/name"
-        android:inputType="textPersonName">
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp">
 
     </EditText>
     <EditText
@@ -48,7 +56,11 @@
         android:background="@drawable/rounded_edittext"
         android:hint="@string/surname"
         android:inputType="textPersonName"
-        android:textSize="18sp">
+        android:textSize="18sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp">
 
     </EditText>
     <EditText
@@ -61,7 +73,11 @@
         android:layout_below="@id/email3"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textSize="18sp">
+        android:textSize="18sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp">
 
     </EditText>
     <EditText
@@ -74,7 +90,11 @@
         android:hint="@string/confirmPassword"
         android:layout_below="@id/entryPassword"
         android:inputType="textPassword"
-        android:textSize="18sp">
+        android:textSize="18sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp">
 
     </EditText>
 

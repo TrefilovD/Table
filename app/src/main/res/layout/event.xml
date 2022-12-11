@@ -95,6 +95,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+
             </ImageView>
 
             <ImageButton
@@ -107,19 +108,20 @@
                 android:src="@drawable/strelka_icon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-
-                ></ImageButton>
+                >
+            </ImageButton>
 
             <ImageButton
                 android:id="@+id/share_button"
                 android:layout_width="43dp"
                 android:layout_height="43dp"
                 android:layout_marginRight="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/button_strelka"
                 android:background="@drawable/button_strelka"
                 android:src="@drawable/share_icon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/button_strelka"></ImageButton>
-
+                >
+            </ImageButton>
             <TextView
                 android:id="@+id/name_event"
                 android:layout_width="wrap_content"
@@ -177,7 +179,9 @@
             <ImageView
                 android:id="@+id/person_icon"
                 android:layout_width="20dp"
-                android:layout_height="20dp">
+                android:layout_height="20dp"
+                android:src="@drawable/green_add_people_icon"
+                >
 
             </ImageView>
 
@@ -215,14 +219,18 @@
 
             <TextView
                 android:id="@+id/description_event"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/darknotes"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/photohost_card"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionTextView">
+                app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+                android:layout_marginStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30dp"
+                >
 
             </TextView>
 
@@ -242,14 +250,20 @@
 
             <TextView
                 android:id="@+id/place_event"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/darknotes"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/photohost_card"
-                app:layout_constraintTop_toBottomOf="@+id/placeTextView"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/placeTextView"
+                android:layout_marginStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30dp"
+                >
+
+            </TextView>
 
             <androidx.constraintlayout.helper.widget.Flow
                 android:id="@+id/flow_metro"
@@ -266,8 +280,10 @@
             <ImageView
                 android:id="@+id/icon_metro"
                 android:layout_width="20dp"
-                android:layout_height="20dp"></ImageView>
-
+                android:layout_height="20dp"
+                android:src="@drawable/green_metro_icon"
+                >
+            </ImageView>
             <TextView
                 android:id="@+id/station_metro"
                 android:layout_width="wrap_content"
@@ -295,14 +311,19 @@
 
             <TextView
                 android:id="@+id/details_event"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/darknotes"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/photohost_card"
-                app:layout_constraintTop_toBottomOf="@+id/detailsTextView"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/detailsTextView"
+                android:layout_marginStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30dp"
+                >
+            </TextView>
 
             <TextView
                 android:id="@+id/hashTextView"
@@ -320,14 +341,19 @@
 
             <TextView
                 android:id="@+id/hash_event"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="50dp"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/darknotes"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/photohost_card"
-                app:layout_constraintTop_toBottomOf="@+id/hashTextView"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/hashTextView"
+                android:layout_marginStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30dp"></TextView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

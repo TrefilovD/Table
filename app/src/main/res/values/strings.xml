@@ -78,6 +78,12 @@
     <string name="example_time_card">(17:00-22:00)</string>
     <string name="example_metro">Парк Победы</string>
     <string name="sign_up">Записаться</string>
+    <string name="notification_card">Детали мероприятия изменились,\nНужно будет подтвердить участие:</string>
+    <string name="notification_card_accept">Принять изменения</string>
+    <string name="notification_card_reject">Отменить участие</string>
+    <string name="filter_txt">Настроить фильтр:</string>
+    <string name="price_filter">Цена</string>
+    <string name="filter_btn">Применить</string>
     <string-array name="sex_items">
         <item></item>
         <item>Женский</item>

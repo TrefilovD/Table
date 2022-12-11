@@ -173,58 +173,70 @@
             </TextView>
             <TextView
                 android:id="@+id/aboutmyself_personalinfo"
-                android:layout_width="310dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/aboutmyselfTextView"
                 app:layout_constraintTop_toBottomOf="@id/aboutmyselfTextView"
                 android:layout_marginTop="10dp"
                 android:textSize="15sp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30dp"
                 >
             </TextView>
             <TextView
                 android:id="@+id/lovelygamesTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/aboutmyself_personalinfo"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/aboutmyself_personalinfo"
                 android:layout_marginTop="20dp"
                 android:text="@string/lovelygames1"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/darknotes"
                 android:textSize="20sp"
+                android:layout_marginStart="30dp"
+
                 >
             </TextView>
             <TextView
                 android:id="@+id/lovelygames_personalinfo"
-                android:layout_width="310dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/lovelygamesTextView"
+                app:layout_constraintStart_toStartOf="@id/aboutmyselfTextView"
                 app:layout_constraintTop_toBottomOf="@id/lovelygamesTextView"
                 android:layout_marginTop="10dp"
                 android:textSize="15sp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30dp"
                 >
             </TextView>
             <TextView
                 android:id="@+id/hashtagsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/lovelygames_personalinfo"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lovelygames_personalinfo"
                 android:layout_marginTop="20dp"
                 android:text="@string/hashtags1"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/darknotes"
                 android:textSize="20sp"
+                android:layout_marginStart="30dp"
                 >
             </TextView>
             <TextView
                 android:id="@+id/hashtags_personalinfo"
-                android:layout_width="310dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/hashtagsTextView"
                 app:layout_constraintTop_toBottomOf="@id/hashtagsTextView"
                 android:layout_marginTop="10dp"
                 android:textSize="15sp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30dp"
                 >
             </TextView>
 
@@ -232,13 +244,14 @@
                 android:id="@+id/svyazTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/hashtags_personalinfo"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hashtags_personalinfo"
                 android:layout_marginTop="20dp"
                 android:text="@string/svyaz"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/darknotes"
                 android:textSize="20sp"
+                android:layout_marginStart="30dp"
                 >
             </TextView>
             <TextView
@@ -289,6 +302,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/darknotes"
                 android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="15dp"
                 >
             </TextView>
             <ImageButton
