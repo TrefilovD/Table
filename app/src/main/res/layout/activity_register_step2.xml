@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/background_table">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
@@ -15,14 +14,14 @@
                     android:id="@+id/tellaboutu1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="69dp"
                     android:text="@string/tellaboutyourself1"
                     android:textColor="@color/darknotes"
                     android:textSize="20sp"
-                    android:layout_marginTop="69dp"
-                    android:layout_marginLeft="50dp"
 
-                    >
-                </TextView>
+                    ></TextView>
+
                 <TextView
                     android:id="@+id/tellaboutu2"
                     android:layout_width="300dp"
@@ -135,7 +134,7 @@
                     >
                 </TextView>
                 <EditText
-                    android:id="@+id/editHash"
+                    android:id="@+id/register_editHashTags"
                     android:layout_width="300dp"
                     android:layout_height="92dp"
                     android:layout_alignLeft="@id/tellaboutu1"
@@ -150,14 +149,14 @@
                     android:id="@+id/buttonDaleeRegister2"
                     android:layout_width="wrap_content"
                     android:layout_height="39dp"
-                    android:layout_below="@id/editHash"
-                    android:layout_alignRight="@+id/editHash"
+                    android:layout_below="@id/register_editHashTags"
+                    android:layout_alignRight="@+id/register_editHashTags"
                     android:layout_marginVertical="20dp"
                     android:background="@drawable/rounded_button"
+                    android:onClick="DoneButtonClicked"
                     android:text="@string/dalee"
-                    android:textColor="@color/darknotes"
                     android:textAllCaps="false"
-                    />
+                    android:textColor="@color/darknotes" />
         </RelativeLayout>
 
 </ScrollView>

@@ -60,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         io.appwrite.models.Account response = (io.appwrite.models.Account) o;
                         String json = response.toString();
+                        UserData userData = new UserData();
+                        userData.userID = response.getId();
+                        myApp.personalData = userData;
                         Log.d("Account get response:", json);
+                        GoToAnotherActivity();
                     }
                 } catch (Throwable th) {
                     GoToLoginActivity();
@@ -77,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void GoToAnotherActivity() {
-
+        Intent intent = new Intent(this, PersonalInfoActivity.class);
+        startActivity(intent);
     }
 }
 
