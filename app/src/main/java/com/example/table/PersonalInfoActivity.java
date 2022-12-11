@@ -1,22 +1,16 @@
-package com.example.table.fragments;
+package com.example.table;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.table.R;
-import com.example.table.TableApp;
-import com.example.table.UserData;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -33,44 +27,22 @@ import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
 
-public class ProfileFragment extends Fragment {
-
+public class PersonalInfoActivity extends AppCompatActivity {
     TableApp myApp;
 
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
-
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        myApp = (TableApp) getActivity().getApplicationContext();
-        Log.i("TEST_PROFILE_SINGLETON", myApp.userID);
+        myApp = (TableApp) getApplicationContext();
         try {
-            GetPersonalInfo(view);
+            GetPersonalInfo();
         } catch (AppwriteException e) {
             e.printStackTrace();
         }
-        return view;
+        setContentView(R.layout.personal_info);
     }
 
-    public void GetPersonalInfo(View view) throws AppwriteException {
+    public void GetPersonalInfo() throws AppwriteException {
         Databases databases = new Databases(this.myApp.appwriteClient);
         databases.listDocuments(
                 myApp.databaseID,
@@ -96,16 +68,14 @@ public class ProfileFragment extends Fragment {
                                 DocumentList docs = (DocumentList) o;
                                 Document doc = docs.getDocuments().get(0);
                                 Map<String, Object> response = doc.getData();
-                                myApp.personalData = response;
-
-                                //менять UI нужно в спец потоке (во фрагменте)
-                                getActivity().runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        FillPersonalData(view, response);
-                                    }
-                                });
-
+                                FillPersonalData(response);
+                                /*Gson g = new Gson();
+                                Log.d("UserData", docs.getDocuments().get(0).getData().toString());
+                                JsonElement jsonElement = g.toJsonTree(docs.getDocuments().get(0).getData());
+                                Log.i("INFO", "ACCESS_USER_DATA");
+                                myApp.personalData = g.fromJson(jsonElement, UserData.class);
+                                Log.i("INFO", "CHANGES");
+                                FillPersonalData(myApp.personalData);*/
                             }
                         } catch (Throwable th) {
                             Log.e("PERSONAL_ACTIVITY_ERROR", th.toString());
@@ -115,50 +85,37 @@ public class ProfileFragment extends Fragment {
         );
     }
 
-    public void FillPersonalData(View view, Map<String, Object> personalData) {
+    public void FillPersonalData(Map<String, Object> personalData) {
         Log.i("INFO", "ACCESS_USER_DATA");
-        TextView name_personalinfo = (TextView) view.findViewById(R.id.name_personalinfo);
+        TextView name_personalinfo = (TextView) findViewById(R.id.name_personalinfo);
         name_personalinfo.setText(personalData.get("name").toString());
-
-        TextView surname_personalinfo = (TextView) view.findViewById(R.id.surname_personalinfo);
+        Log.i("INFO", "CHANGES");
+        TextView surname_personalinfo = (TextView) findViewById(R.id.surname_personalinfo);
         surname_personalinfo.setText(personalData.get("surname").toString());
-
-        TextView age_personalinfo = (TextView) view.findViewById(R.id.age_personalinfo);
+        TextView age_personalinfo = (TextView) findViewById(R.id.age_personalinfo);
         if (personalData.get("age")!=null) {
             age_personalinfo.setText(personalData.get("age").toString().concat(" " + getAgePostfix((int) personalData.get("age"))));
         }
-
-        TextView rating_personainfo = (TextView) view.findViewById(R.id.rating_personainfo);
+        TextView rating_personainfo = (TextView) findViewById(R.id.rating_personainfo);
         if (personalData.get("rate")!=null) {
             rating_personainfo.setText(personalData.get("rate").toString());
         }
-
-        TextView number_organz_events_personalinfo = (TextView) view.findViewById(R.id.number_organz_events_personalinfo);
-        ArrayList<Integer> hostedEvents = (ArrayList) personalData.get("hostedEvents");
-        number_organz_events_personalinfo.setText(Integer.toString(hostedEvents.size()));
-
-        TextView number_uchast_events_personalinfo = (TextView) view.findViewById(R.id.uchastnikTextView);
-        ArrayList<Integer> currentEvents = (ArrayList) personalData.get("currentEvents");
-        number_uchast_events_personalinfo.setText(Integer.toString(currentEvents.size()));
-
-        TextView aboutmyself_personalinfo = (TextView) view.findViewById(R.id.aboutmyself_personalinfo);
+        TextView number_organz_events_personalinfo = (TextView) findViewById(R.id.number_organz_events_personalinfo);
+        number_organz_events_personalinfo.setText(Array.getLength(personalData.get("hostedEvents")));
+        TextView number_uchast_events_personalinfo = (TextView) findViewById(R.id.number_uchast_events_personalinfo);
+        number_uchast_events_personalinfo.setText(Array.getLength(personalData.get("currentEvents")));
+        TextView aboutmyself_personalinfo = (TextView) findViewById(R.id.aboutmyself_personalinfo);
         aboutmyself_personalinfo.setText(personalData.get("about").toString());
-
-        TextView lovelygames_personalinfo = (TextView) view.findViewById(R.id.lovelygames_personalinfo);
+        TextView lovelygames_personalinfo = (TextView) findViewById(R.id.lovelygames_personalinfo);
         lovelygames_personalinfo.setText(String.join(", ", personalData.get("games").toString()));
-
-        TextView hashtags_personalinfo = (TextView) view.findViewById(R.id.hashtags_personalinfo);
+        TextView hashtags_personalinfo = (TextView) findViewById(R.id.hashtags_personalinfo);
         hashtags_personalinfo.setText(String.join(" ", personalData.get("hashtags").toString()));
-
-        TextView email_personalinfo = (TextView) view.findViewById(R.id.email_personalinfo);
+        TextView email_personalinfo = (TextView) findViewById(R.id.email_personalinfo);
         email_personalinfo.setText(String.join(" ", personalData.get("email").toString()));
-
-        TextView number_personalinfo = (TextView) view.findViewById(R.id.number_personalinfo);
+        TextView number_personalinfo = (TextView) findViewById(R.id.number_personalinfo);
         if (personalData.get("phone") != null) {
             number_personalinfo.setText(String.join(" ", personalData.get("phone").toString()));
         }
-
-        Log.i("INFO", "PROFILE_SUCCES");
     }
 
     public String getAgePostfix(int age) {

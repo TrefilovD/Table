@@ -58,6 +58,12 @@ public class Authorisation_activity extends AppCompatActivity {
                     } else {
                         myApp.session = (Session) o;
                         Log.d("AUTHORISE_SUCCESS", myApp.session.getUserId());
+
+                        //userID хранится в сессии
+
+                       /* UserData userData = new UserData();
+                        userData.userID = myApp.session.getUserId();
+                        myApp.personalData = userData;*/
                     }
                 } catch (Throwable th) {
                     Log.e("LOGINERROR", th.toString());
@@ -75,6 +81,11 @@ public class Authorisation_activity extends AppCompatActivity {
     public void NoAccountButtonClicked(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+    }
+
+    public void goToUserInfoActivity() {
+        Intent intent = new Intent(this, test_nav_menu.class);
         startActivity(intent);
     }
 }
