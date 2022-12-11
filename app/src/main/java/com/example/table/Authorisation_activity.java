@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.table.databinding.ActivityMainBinding;
+import com.example.table.fragments.test_nav_menu;
+
 import io.appwrite.exceptions.AppwriteException;
 import io.appwrite.models.Session;
 import io.appwrite.services.Account;
@@ -20,12 +23,16 @@ import kotlin.coroutines.EmptyCoroutineContext;
 
 public class Authorisation_activity extends AppCompatActivity {
     private TableApp myApp;
-    //костыль
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authorisation);
         myApp = (TableApp) getApplicationContext();
+
+        Intent intent = new Intent(this, test_nav_menu.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
     }
 
     public void signInClicked(View view) throws AppwriteException {
@@ -51,6 +58,12 @@ public class Authorisation_activity extends AppCompatActivity {
                     } else {
                         myApp.session = (Session) o;
                         Log.d("AUTHORISE_SUCCESS", myApp.session.getUserId());
+
+                        //userID хранится в сессии
+
+                       /* UserData userData = new UserData();
+                        userData.userID = myApp.session.getUserId();
+                        myApp.personalData = userData;*/
                     }
                 } catch (Throwable th) {
                     Log.e("LOGINERROR", th.toString());
@@ -68,6 +81,11 @@ public class Authorisation_activity extends AppCompatActivity {
     public void NoAccountButtonClicked(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+    }
+
+    public void goToUserInfoActivity() {
+        Intent intent = new Intent(this, test_nav_menu.class);
         startActivity(intent);
     }
 }

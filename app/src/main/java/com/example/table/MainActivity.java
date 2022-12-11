@@ -20,12 +20,14 @@ import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
 import android.view.View;
 
+import com.example.table.databinding.ActivityMainBinding;
+import com.example.table.fragments.test_nav_menu;
 import com.google.gson.Gson;
 
 
 public class MainActivity extends AppCompatActivity {
     TableApp myApp;
-    //костыль
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -59,8 +61,13 @@ public class MainActivity extends AppCompatActivity {
                         throw failure.exception;
                     } else {
                         io.appwrite.models.Account response = (io.appwrite.models.Account) o;
+                        myApp.userID = response.getId();
                         String json = response.toString();
+                        //UserData userData = new UserData();
+                        //userData.userID = response.getId();
+                        //myApp.personalData = userData;
                         Log.d("Account get response:", json);
+                        GoToAnotherActivity();
                     }
                 } catch (Throwable th) {
                     GoToLoginActivity();
@@ -77,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void GoToAnotherActivity() {
-
+        Intent intent = new Intent(this, test_nav_menu.class);
+        startActivity(intent);
     }
 }
 

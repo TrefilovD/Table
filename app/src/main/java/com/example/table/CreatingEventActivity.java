@@ -13,7 +13,7 @@ public class CreatingEventActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_creating_event);
+        setContentView(R.layout.create_event);
     }
     //костыль
     public void creatingEvent() {
