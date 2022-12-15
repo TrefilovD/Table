@@ -26,6 +26,7 @@
             android:background="@drawable/rounded_button"
             android:clickable="true"
             android:fontFamily="@font/roboto_regular"
+            android:onClick="onClickRegistrationOnEvent"
             android:text="@string/take_part"
             android:textAllCaps="false"
             android:textColor="@color/darknotes"

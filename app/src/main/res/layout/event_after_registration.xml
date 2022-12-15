@@ -26,6 +26,7 @@
             android:background="@drawable/rounded_button"
 
             android:fontFamily="@font/roboto_regular"
+            android:onClick="onClickMove2Chat"
             android:text="@string/go_to_chat"
             android:textAllCaps="false"
             android:textColor="@color/darknotes"

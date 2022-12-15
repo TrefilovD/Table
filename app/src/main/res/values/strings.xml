@@ -71,4 +71,12 @@
         <item>Женский</item>
         <item>Мужской</item>
     </string-array>
+    <string-array name="spinnerItemsCities">
+        <item>Москва</item>
+        <item>Санкт-Петербург</item>
+    </string-array>
+    <string-array name="spinnerItemsMetro">
+        <item>Октябрьская</item>
+        <item>Китай-город</item>
+    </string-array>
 </resources>

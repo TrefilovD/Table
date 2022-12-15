@@ -2,6 +2,10 @@ package com.example.table;
 
 import android.app.Application;
 
+import com.example.table.Event.Event;
+
+import java.util.ArrayList;
+
 import io.appwrite.Client;
 import io.appwrite.models.Session;
 //костыль
@@ -11,4 +15,6 @@ public class TableApp extends Application {
     public Client appwriteClient;
     //public AuthorisationData sessionData;
     public Session session;
+
+    public ArrayList<Event> Events;
 }
