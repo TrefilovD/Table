@@ -9,16 +9,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import org.jetbrains.annotations.NotNull;
 
 import io.appwrite.exceptions.AppwriteException;
 import io.appwrite.extensions.JsonExtensionsKt;
 import io.appwrite.models.Session;
 import io.appwrite.services.Account;
+import io.appwrite.services.Databases;
 import kotlin.Result;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
+
+
 
 public class RegisterActivity extends AppCompatActivity {
     TableApp myApp;
@@ -32,11 +37,11 @@ public class RegisterActivity extends AppCompatActivity {
     }
     //костыль
     public void RegisterButtonClicked(View view) throws AppwriteException {
-        TextView nameField = (TextView) findViewById(R.id.name);
-        TextView surnameField = (TextView) findViewById(R.id.surname);
-        TextView emailField = (TextView) findViewById(R.id.email);
-        TextView passwordField = (TextView) findViewById(R.id.password);
-        TextView passwordConfirmField = (TextView) findViewById(R.id.confirmPassword);
+        TextView nameField = (TextView) findViewById(R.id.register_name);
+        TextView surnameField = (TextView) findViewById(R.id.register_surname);
+        TextView emailField = (TextView) findViewById(R.id.register_email);
+        TextView passwordField = (TextView) findViewById(R.id.register_entryPassword);
+        TextView passwordConfirmField = (TextView) findViewById(R.id.register_confirmPassword);
         String name = nameField.getText().toString();
         String surname = surnameField.getText().toString();
         String email = emailField.getText().toString();

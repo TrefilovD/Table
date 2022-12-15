@@ -6,7 +6,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <RelativeLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_table">
@@ -44,12 +46,18 @@
         </TextView>
         <EditText
             android:id="@+id/editNameEvent"
-            android:layout_width="350dp"
-            android:layout_height="66dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignLeft="@id/nazvanieTextV"
             android:layout_below="@id/nazvanieTextV"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_edittext"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
 
         </EditText>
@@ -107,6 +115,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_edittext"
             android:layout_marginRight="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
         </EditText>
         <EditText
@@ -120,6 +132,10 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/rounded_edittext"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
         </EditText>
         <TextView
@@ -135,6 +151,47 @@
 
             >
         </TextView>
+        <CheckBox
+            android:id="@+id/checkbox_free"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hintKolvo"
+            android:layout_alignLeft="@id/maxTextV"
+            android:layout_marginTop="10dp"
+            android:text="Бесплатно или "
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/darknotes"
+            >
+
+        </CheckBox>
+        <EditText
+            android:id="@+id/price_createEvent"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:layout_toRightOf="@id/checkbox_free"
+            android:layout_alignTop="@id/checkbox_free"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            >
+
+        </EditText>
+        <ImageView
+            android:id="@+id/icon_dengi_2"
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@id/price_createEvent"
+            android:layout_alignTop="@id/price_createEvent"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/rubl_icon"
+            android:layout_marginTop="5dp"
+            >
+        </ImageView>
+
         <TextView
             android:id="@+id/kogdaTextV"
             android:layout_width="wrap_content"
@@ -142,8 +199,8 @@
             android:text="@string/kogda"
             android:textColor="@color/darknotes"
             android:textSize="18sp"
-            android:layout_below="@id/maxTextV"
-            android:layout_marginTop="22dp"
+            android:layout_below="@id/checkbox_free"
+            android:layout_marginTop="10dp"
             android:layout_alignLeft="@id/nazvanieTextV"
             android:fontFamily="@font/roboto_regular"
             >
@@ -157,6 +214,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_edittext"
             android:inputType="date"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
 
         </EditText>
@@ -164,7 +225,7 @@
             android:id="@+id/from"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=", c "
+            android:text=" c "
             android:layout_toRightOf="@+id/editDate"
             android:layout_below="@id/kogdaTextV"
             android:textColor="@color/darknotes"
@@ -185,6 +246,10 @@
             android:background="@drawable/rounded_edittext"
             android:layout_marginLeft="5dp"
             android:inputType="time"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
         </EditText>
         <TextView
@@ -212,6 +277,10 @@
             android:background="@drawable/rounded_edittext"
             android:layout_marginLeft="5dp"
             android:inputType="time"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
         </EditText>
         <TextView
@@ -238,14 +307,18 @@
         </TextView>
         <Spinner
             android:id="@+id/spinner_gorod"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="33dp"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
             android:layout_below="@+id/gorodTextV"
             android:layout_alignLeft="@+id/nazvanieTextV"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selection_gorod"
-            android:entries="@array/spinnerItemsCities"
+            android:entries="@array/metro_items"
+            android:background="@color/white"
+            android:layout_alignEnd="@id/editNameEvent"
+
             >
         </Spinner>
         <TextView
@@ -263,12 +336,18 @@
         </TextView>
         <EditText
             android:id="@+id/editPlace"
-            android:layout_width="350dp"
-            android:layout_height="66dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignLeft="@id/nazvanieTextV"
             android:layout_below="@id/placeTextV"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
             android:background="@drawable/rounded_edittext"
+            android:layout_alignEnd="@id/editNameEvent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
         </EditText>
         <TextView
@@ -295,23 +374,28 @@
         </TextView>
         <Spinner
             android:id="@+id/spinner_metro"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="33dp"
             android:layout_below="@+id/metroTextV"
             android:layout_marginTop="10dp"
             android:layout_alignLeft="@+id/nazvanieTextV"
+            android:layout_marginLeft="25dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selection_metro"
-            android:entries="@array/spinnerItemsMetro"
+            android:background="@color/white"
+            android:layout_alignEnd="@id/editNameEvent"
+            android:entries="@array/metro_items"
             >
         </Spinner>
         <GridLayout
             android:id="@+id/cardsWithMetro"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_alignLeft="@id/nazvanieTextV"
             android:layout_below="@id/spinner_metro"
             android:layout_marginTop="5dp"
+            android:layout_marginLeft="25dp"
+            android:layout_alignEnd="@id/editNameEvent"
             >
         </GridLayout>
         <TextView
@@ -329,13 +413,19 @@
         </TextView>
         <EditText
             android:id="@+id/editDescription"
-            android:layout_width="350dp"
-            android:layout_height="92dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignLeft="@id/nazvanieTextV"
+            android:layout_marginLeft="25dp"
             android:layout_below="@id/descriptionTextV"
             android:layout_marginTop="10dp"
+            android:layout_alignEnd="@id/editNameEvent"
             android:background="@drawable/rounded_edittext"
             android:hint="@string/hint_opisanie"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
         </EditText>
         <TextView
@@ -353,13 +443,19 @@
         </TextView>
         <EditText
             android:id="@+id/editChat"
-            android:layout_width="350dp"
-            android:layout_height="41dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignLeft="@id/nazvanieTextV"
             android:layout_below="@id/chatTextV"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_edittext"
+            android:layout_alignEnd="@id/editNameEvent"
             android:hint="@string/hint_chat"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
         </EditText>
 
@@ -378,13 +474,19 @@
         </TextView>
         <EditText
             android:id="@+id/editDetali"
-            android:layout_width="350dp"
-            android:layout_height="92dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignLeft="@id/nazvanieTextV"
             android:layout_below="@id/detaliTextV"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_edittext"
             android:hint="@string/hint_detali"
+            android:layout_alignEnd="@id/editNameEvent"
+            android:layout_marginLeft="25dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
         </EditText>
         <TextView
@@ -424,14 +526,20 @@
         </TextView>
         <TextView
             android:id="@+id/hashtag_event"
-            android:layout_width="350dp"
-            android:layout_height="92dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/hint_hashtagTextV"
             android:layout_marginTop="10dp"
             android:layout_alignLeft="@+id/nazvanieTextV"
             android:background="@drawable/rounded_edittext"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selection_hashtag"
+            android:layout_alignEnd="@id/editNameEvent"
+            android:layout_marginLeft="25dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             >
         </TextView>
 
