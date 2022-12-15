@@ -42,12 +42,13 @@ import io.appwrite.Client;
 import io.appwrite.services.Databases;
 
 public class CreateEvent extends AppCompatActivity {
-    TableApp myApp;
-    Account account;
+    private TableApp myApp;
+    private Databases databases;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         myApp = (TableApp) getApplicationContext();
+        new Databases(myApp.appwriteClient);
 //        this.account = new Account(myApp.appwriteClient);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_event);
@@ -125,11 +126,9 @@ public class CreateEvent extends AppCompatActivity {
     }
 
     private void addNewEvent(Event event) throws AppwriteException {
-        myApp = (TableApp) getApplicationContext();
 //        Client client = new Client(getApplicationContext())
 //                .setEndpoint("http://tableapp.online:8111/v1") // Your API Endpoint
 //                .setProject("6356860bb84da9132dfd"); // Your project ID
-        Databases databases = new Databases(myApp.appwriteClient);
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("name", event.name); // string
