@@ -67,10 +67,12 @@ public class MainActivity extends AppCompatActivity {
                         //userData.userID = response.getId();
                         //myApp.personalData = userData;
                         Log.d("Account get response:", json);
-                        GoToAnotherActivity();
+//                        GoToAnotherActivity();
+                        GoToLoginActivity();
                     }
                 } catch (Throwable th) {
                     GoToLoginActivity();
+//                    GoToAnotherActivity();
                     Log.e("Account get ERROR", th.toString());
                 }
             }
@@ -84,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void GoToAnotherActivity() {
-        Intent intent = new Intent(this, test_nav_menu.class);
+//        Intent intent = new Intent(this, test_nav_menu.class);
+        Intent intent = new Intent(this, CreateEvent.class);
         startActivity(intent);
     }
 }

@@ -26,6 +26,7 @@ import io.appwrite.ID;
 import io.appwrite.services.Account;
 import io.appwrite.services.Databases;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
 import io.appwrite.exceptions.AppwriteException;
 import io.appwrite.extensions.JsonExtensionsKt;
@@ -47,11 +48,11 @@ public class CreateEvent extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        myApp = (TableApp) getApplicationContext();
-        new Databases(myApp.appwriteClient);
-//        this.account = new Account(myApp.appwriteClient);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_event);
+        myApp = (TableApp) getApplicationContext();
+        databases = new Databases(this.myApp.appwriteClient);
+
     }
 
     public void onClickCreateEvent(View view) throws AppwriteException {
@@ -146,13 +147,14 @@ public class CreateEvent extends AppCompatActivity {
         map.put("participants", event.participants); // required: string[]
         map.put("price", event.price); // not required: double
         map.put("hostID", event.hostID); // required: string
+//        new JSONObject(map);
 //        ID id = new ID();
         String id = "asdasdasd";
         databases.createDocument(
-                "635abed829e099dfcd5c",
-                "635abf30a88c059105e3",
+                myApp.databaseID,
+                myApp.event_collectionID,
                 id,
-                map,
+                new JSONObject(map),
                 new Continuation<Object>() {
                     @NotNull
                     @Override
@@ -188,8 +190,9 @@ public class CreateEvent extends AppCompatActivity {
         String hash = "asdasdasd";
 //        String hash = new ID().toString();
         Log.i("SUPER", "Super");
-//        Intent intent = new Intent(".event");
-//        intent.putExtra("eventid", hash);
-//        startActivity(intent);
+        Intent intent = new Intent(this, event.class);
+        intent.putExtra("eventid", hash);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
     }
 }

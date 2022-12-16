@@ -23,6 +23,7 @@ import kotlin.coroutines.EmptyCoroutineContext;
 
 public class Authorisation_activity extends AppCompatActivity {
     private TableApp myApp;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +31,12 @@ public class Authorisation_activity extends AppCompatActivity {
         setContentView(R.layout.authorisation);
         myApp = (TableApp) getApplicationContext();
 
-        Intent intent = new Intent(this, test_nav_menu.class);
+//        Intent intent = new Intent(this, CreateEvent.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//        startActivity(intent);
+        intent = new Intent(this, CreateEvent.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivity(intent);
+
     }
 
     public void signInClicked(View view) throws AppwriteException {
@@ -58,7 +62,8 @@ public class Authorisation_activity extends AppCompatActivity {
                     } else {
                         myApp.session = (Session) o;
                         Log.d("AUTHORISE_SUCCESS", myApp.session.getUserId());
-
+                        startActivity(intent);
+//                        goToUserInfoActivity();
                         //userID хранится в сессии
 
                        /* UserData userData = new UserData();
@@ -85,7 +90,7 @@ public class Authorisation_activity extends AppCompatActivity {
     }
 
     public void goToUserInfoActivity() {
-        Intent intent = new Intent(this, test_nav_menu.class);
+        Intent intent = new Intent(this, PersonalInfoActivity.class);
         startActivity(intent);
     }
 }
