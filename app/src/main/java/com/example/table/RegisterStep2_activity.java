@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.table.fragments.test_nav_menu;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -71,10 +72,6 @@ public class RegisterStep2_activity extends AppCompatActivity {
         //чтобы не использовать лишнее
         String json = JsonExtensionsKt.toJson(myApp.personalData);
 
-        //UserData userData = new UserData(this.name,this.surname, this.accountId,null,null,this.email, aboutYou, loveGames, hashTags, null, null, null, null);
-        //myApp.personalData = userData;
-        //Gson g = new Gson();
-        //String json = g.toJson(userData);
         Databases databases = new Databases(this.myApp.appwriteClient);
         databases.createDocument(
                 "635abed829e099dfcd5c",
@@ -108,7 +105,7 @@ public class RegisterStep2_activity extends AppCompatActivity {
     }
 
     public void goToAccountActivity() {
-        Intent intent = new Intent(this, PersonalInfoActivity.class);
+        Intent intent = new Intent(this, test_nav_menu.class);
         startActivity(intent);
     }
 }
