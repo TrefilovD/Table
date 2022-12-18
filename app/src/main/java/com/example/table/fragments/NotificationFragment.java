@@ -72,7 +72,55 @@ public class NotificationFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         try {
-            getNotificationsInfo(view);
+
+            Databases databases = new Databases(this.myApp.appwriteClient);
+            databases.listDocuments(
+                    myApp.databaseID,
+                    myApp.notification_collectionID,
+                    List.of(
+                            Query.Companion.equal("receiverID", myApp.userID)
+                    ),
+
+                    new Continuation<Object>() {
+                        @NotNull
+                        @Override
+                        public CoroutineContext getContext() {
+                            return EmptyCoroutineContext.INSTANCE;
+                        }
+
+                        @Override
+                        public void resumeWith(@NotNull Object o) {
+                            try {
+                                if (o instanceof Result.Failure) {
+                                    Result.Failure failure = (Result.Failure) o;
+                                    throw failure.exception;
+                                } else {
+                                    Log.d("Appwrite", o.toString());
+                                    DocumentList docs = (DocumentList) o;
+
+                                    //TODO доделать получение уведомлений
+                                    Document doc = docs.getDocuments().get(0);
+                                    Map<String, Object> response = doc.getData();
+                                    myApp.personalData = response;
+
+                                    Log.i("NOTIFICATIONS", (String) response.get("type"));
+                                    //менять UI нужно в спец потоке (во фрагменте)
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+
+                                        }
+                                    });
+
+                                }
+                            } catch (Throwable th) {
+                                Log.e("NOTIFICATION_ERROR", th.toString());
+                            }
+                        }
+                    }
+
+            );
+
         }
         catch (Throwable th){
             Log.e("ERROR", th.toString());
@@ -105,6 +153,7 @@ public class NotificationFragment extends Fragment {
                         "Alexander Tolstenko",
                         "Запрос на участие")
         };
+
 
         MyNotificationAdapter myNotificationAdapter = new MyNotificationAdapter(myNotifications, this);
 

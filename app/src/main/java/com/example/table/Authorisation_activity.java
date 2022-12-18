@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.table.databinding.ActivityMainBinding;
 import com.example.table.fragments.test_nav_menu;
 
 import io.appwrite.exceptions.AppwriteException;
@@ -29,10 +28,6 @@ public class Authorisation_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authorisation);
         myApp = (TableApp) getApplicationContext();
-
-        Intent intent = new Intent(this, test_nav_menu.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivity(intent);
     }
 
     public void signInClicked(View view) throws AppwriteException {
@@ -58,12 +53,8 @@ public class Authorisation_activity extends AppCompatActivity {
                     } else {
                         myApp.session = (Session) o;
                         Log.d("AUTHORISE_SUCCESS", myApp.session.getUserId());
-
-                        //userID хранится в сессии
-
-                       /* UserData userData = new UserData();
-                        userData.userID = myApp.session.getUserId();
-                        myApp.personalData = userData;*/
+                        //переходим в главное меню
+                        goToSearchActivity();
                     }
                 } catch (Throwable th) {
                     Log.e("LOGINERROR", th.toString());
@@ -84,7 +75,7 @@ public class Authorisation_activity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToUserInfoActivity() {
+    public void goToSearchActivity() {
         Intent intent = new Intent(this, test_nav_menu.class);
         startActivity(intent);
     }
