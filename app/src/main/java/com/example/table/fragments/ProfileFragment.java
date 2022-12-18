@@ -12,13 +12,9 @@ import android.widget.TextView;
 
 import com.example.table.R;
 import com.example.table.TableApp;
-import com.example.table.UserData;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
