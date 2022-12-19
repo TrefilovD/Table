@@ -10,14 +10,14 @@ import com.example.table.UserData;
 
 
 public class Event {
-    private TableApp global = new TableApp();
-    public Integer hash;
     // features events
 
     public String name; // required: string
     public Integer minUsersQty; // required: integer
     public Integer maxUsersQty; // required: integer
     public String dateTime; // required: datetime
+    public String timeBegin; // not required: datetime
+    public String timeEnd; // not required: datetime
     public String city; // required: string
     public String geo; // required: string
     public String[] metro; // required: string[]
@@ -37,6 +37,8 @@ public class Event {
         Integer minUsersQty,
         Integer maxUsersQty,
         String dateTime,
+        String timeBegin,
+        String timeEnd,
         String city,
         String geo,
         String[] metro,
@@ -53,6 +55,8 @@ public class Event {
         this.minUsersQty = minUsersQty;
         this.maxUsersQty = maxUsersQty;
         this.dateTime = dateTime;
+        this.timeBegin = timeBegin;
+        this.timeEnd = timeEnd;
         this.city = city;
         this.geo = geo;
         this.metro = metro;
@@ -64,25 +68,5 @@ public class Event {
         this.participants = participants;
         this.price = price;
         this.hostID = hostID;
-
-//        hash = global.Events.size();
-    }
-
-
-    public Event getEventById(Integer id) {
-        // обращение к БД
-        Event event = new Event();
-        return event;
-    }
-
-    public ArrayList<Event> getAllEventsById(Integer id) {
-        // обращение к БД
-        ArrayList<Event> events = new ArrayList<Event>();
-        return events;
-    }
-
-    public void setEvent2DB(Event event) {
-        // запись текущих данных в БД
-        global.Events.add(event);
     }
 }
