@@ -1,13 +1,5 @@
 package com.example.table.Event;
 
-import static java.sql.Types.NULL;
-
-import java.util.ArrayList;
-import java.util.Date;
-
-import com.example.table.TableApp;
-import com.example.table.UserData;
-
 
 public class Event {
     // features events
