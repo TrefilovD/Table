@@ -315,7 +315,7 @@
             android:layout_alignLeft="@+id/nazvanieTextV"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selection_gorod"
-            android:entries="@array/metro_items"
+            android:entries="@array/cities_items"
             android:background="@color/white"
             android:layout_alignEnd="@id/editNameEvent"
 
@@ -524,7 +524,7 @@
             app:layout_constraintTop_toTopOf="parent"
             >
         </TextView>
-        <TextView
+        <EditText
             android:id="@+id/hashtag_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -541,7 +541,7 @@
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             >
-        </TextView>
+        </EditText>
 
         <Button
             android:id="@+id/buttonCreateEvent"
