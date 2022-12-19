@@ -21,6 +21,7 @@ import java.util.Map;
 
 import io.appwrite.Query;
 import io.appwrite.exceptions.AppwriteException;
+import io.appwrite.extensions.JsonExtensionsKt;
 import io.appwrite.models.Document;
 import io.appwrite.models.DocumentList;
 import io.appwrite.services.Databases;
@@ -67,13 +68,18 @@ public class ProfileFragment extends Fragment {
     }
 
     public void GetPersonalInfo(View view) throws AppwriteException {
+        //подключение к БД
         Databases databases = new Databases(this.myApp.appwriteClient);
+
+        //запрос к БД
         databases.listDocuments(
                 myApp.databaseID,
                 myApp.user_collectionID,
                 List.of(
+                        //поиск по индексу userID
                         Query.Companion.equal("userID", myApp.userID)
                 ),
+                //корутина для ожидания ответа с сервера
                 new Continuation<Object>() {
                     @NotNull
                     @Override
@@ -81,16 +87,22 @@ public class ProfileFragment extends Fragment {
                         return EmptyCoroutineContext.INSTANCE;
                     }
 
+                    //метод, который срабатывает после получения ответа с сервера
                     @Override
-                    public void resumeWith(@NotNull Object o) {
+                    public void resumeWith(@NotNull Object o) { //о - ответ сервера в формате JSON
                         try {
                             if (o instanceof Result.Failure) {
                                 Result.Failure failure = (Result.Failure) o;
                                 throw failure.exception;
                             } else {
                                 Log.d("Appwrite", o.toString());
+
+                                //ответ с сервера парсим в список документов (реализован в AppWrite)
+                                //в логах будет строчка с ответом с сервера
                                 DocumentList docs = (DocumentList) o;
+                                //достаем первый документ из полученных
                                 Document doc = docs.getDocuments().get(0);
+                                //получаем данные из БД
                                 Map<String, Object> response = doc.getData();
                                 myApp.personalData = response;
 

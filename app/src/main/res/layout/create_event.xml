@@ -518,7 +518,7 @@
             app:layout_constraintTop_toTopOf="parent"
             >
         </TextView>
-        <TextView
+        <EditText
             android:id="@+id/hashtag_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -530,12 +530,13 @@
             app:layout_constraintTop_toBottomOf="@+id/selection_hashtag"
             android:layout_alignEnd="@id/editNameEvent"
             android:layout_marginLeft="25dp"
+
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             >
-        </TextView>
+        </EditText>
 
         <Button
             android:id="@+id/buttonCreateEvent"

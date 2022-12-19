@@ -53,6 +53,7 @@
             android:src="@drawable/search_icon_orange"
             android:layout_marginLeft="10dp"
             android:background="@android:color/transparent"
+            android:onClick="lupa_button_click"
             >
 
         </ImageButton>
