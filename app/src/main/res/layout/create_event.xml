@@ -536,6 +536,7 @@
             app:layout_constraintTop_toBottomOf="@+id/selection_hashtag"
             android:layout_alignEnd="@id/editNameEvent"
             android:layout_marginLeft="25dp"
+
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="3dp"

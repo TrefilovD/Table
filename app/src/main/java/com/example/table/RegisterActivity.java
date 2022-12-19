@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
     }
-    //костыль
+
     public void RegisterButtonClicked(View view) throws AppwriteException {
         TextView nameField = (TextView) findViewById(R.id.register_name);
         TextView surnameField = (TextView) findViewById(R.id.register_surname);
