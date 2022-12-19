@@ -1,0 +1,35 @@
+{
+  "documents":
+  [
+    {
+      "$collectionId":"635abf1ceefe2d36771b",
+      "$createdAt":"2022-10-27T18:24:42.822+00:00",
+      "data":
+      {
+        "name":"Александр",
+        "surname":"Толстенко",
+        "age":21,
+        "email":"alexandro-tolstenko@mail.ru",
+        "about":"Я крутой, нереально заряженный парень.",
+        "games":["Мафия","Маги","Бэнг"],
+        "hashtags":["на двоих","дуэль","патигеймы"],
+        "hostedEvents":[],
+        "currentEvents":[],
+        "phone":"88003555535",
+        "sex":"male",
+        "userID":"635c2175b1f5de2ebff2",
+        "$id":"635acceac8a727b1f253",
+        "$createdAt":"2022-10-27T18:24:42.822+00:00",
+        "$updatedAt":"2022-11-05T20:38:17.070+00:00",
+        "$permissions":[],
+        "$collectionId":"635abf1ceefe2d36771b",
+        "$databaseId":"635abed829e099dfcd5c"
+      },
+      "$databaseId":"635abed829e099dfcd5c",
+      "$id":"635acceac8a727b1f253",
+      "$permissions":[],
+      "$updatedAt":"2022-11-05T20:38:17.070+00:00"
+    }
+  ],
+  "total":1
+}
