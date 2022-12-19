@@ -11,7 +11,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.table.Event.Event;
-import com.example.table.fragments.test_nav_menu;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import io.appwrite.models.Document;
 import io.appwrite.services.Databases;
 import org.jetbrains.annotations.NotNull;
 
@@ -198,7 +198,10 @@ public class CreateEvent extends AppCompatActivity {
                                 Result.Failure failure = (Result.Failure) o;
                                 throw failure.exception;
                             } else {
-                                moveOnSearch();
+                                Document document = (Document) o;
+                                String eventid = document.getId();
+                                Log.i("CREATED_EVENT", eventid);
+                                moveOnEvent(eventid);
                             }
                         } catch (Throwable th) {
                             Log.e("CREATING EVENT ERROR", th.toString());
@@ -211,17 +214,13 @@ public class CreateEvent extends AppCompatActivity {
         );
     }
 
-    @Override
-    public void onBackPressed() {
-        moveOnSearch();
-    }
 
-    private void moveOnSearch() {
+    private void moveOnEvent(String eventid) {
         /*
-        Переход на окно поиска ивентов
+        Переход на окно созданного мероприятия
          */
-        Intent intent = new Intent(this, test_nav_menu.class);
-//        intent.putExtra("eventid")
+        Intent intent = new Intent(this, event_host.class);
+        intent.putExtra("eventid",eventid);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }

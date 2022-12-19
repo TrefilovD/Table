@@ -284,7 +284,6 @@ public class event_host extends AppCompatActivity{
             e.printStackTrace();
         }
     }
-
     @Override
     public void onBackPressed() {
         moveOnSearch();

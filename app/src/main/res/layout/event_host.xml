@@ -37,7 +37,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:background="@drawable/button_strelka"
                 android:src="@drawable/strelka_icon"
-
                 >
             </ImageButton>
 
