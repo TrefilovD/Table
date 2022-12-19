@@ -4,19 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.table.Event.Event;
-import com.example.table.TableApp;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import io.appwrite.Query;
@@ -30,126 +34,176 @@ import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
 
 public class event extends AppCompatActivity{
-    private String status_person; // not_member, member, owner
     private Event event;
-    private ArrayList<Event> events = new TableApp().Events;
-    Integer EventId;
+    private String EventId;
     private TableApp myApp;
+    private Databases databases;
+
+    private TextView name_tv;
+    private TextView host_tv;
+    private TextView num_members_tv;
+    private TextView description_tv;
+    private TextView location_tv;
+    private TextView metro_tv;
+    private TextView details_tv;
+    private TextView hashtags_tv;
+    private TextView date_tv;
+    private TextView time_tv;
+    private TextView price_tv;
+
+    private ArrayList participants;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.event);
+
         myApp = (TableApp) getApplicationContext();
+        databases = new Databases(this.myApp.appwriteClient);
+
+        name_tv = (TextView) findViewById(R.id.name_event);
+        host_tv = (TextView) findViewById(R.id.name_host);
+        num_members_tv = (TextView) findViewById(R.id.number_of_people);
+        description_tv = (TextView) findViewById(R.id.description_event);
+        location_tv = (TextView) findViewById(R.id.place_event);
+        metro_tv = (TextView) findViewById(R.id.station_metro);
+        details_tv = (TextView) findViewById(R.id.details_event);
+        hashtags_tv = (TextView) findViewById(R.id.hash_event);
+        date_tv = (TextView) findViewById(R.id.dataTextView);
+        time_tv = (TextView) findViewById(R.id.timeTextView);
+        price_tv = (TextView) findViewById(R.id.priceTextView);
 
         Intent intent = getIntent();
-
-        EventId = Integer.parseInt(intent.getStringExtra("eventid"));
-
+        EventId = intent.getStringExtra("eventid");
         try {
             getEventInfo();
         } catch (AppwriteException e) {
             e.printStackTrace();
         }
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.event);
+//        setContentView(R.layout.event);
     }
 
-    public void onClickRegistrationOnEvent(View view) {
+    public void onClickRegistrationOnEvent(View view) throws AppwriteException {
+        String num_members_str = num_members_tv.getText().toString();
+        String[] parts = num_members_str.split("/");
+        Integer min = Integer.parseInt(parts[0]);
+        Integer max = Integer.parseInt(parts[1]);
+        if (min < max) {
+            Map<String, Object> map = new HashMap<String, Object>();
+            participants.add(myApp.userID);
+            map.put("participants", participants);
 
-    }
+            databases.updateDocument(
+                    myApp.databaseID,
+                    myApp.event_collectionID,
+                    EventId,
+                    map,
+                    new Continuation<Object>() {
+                        @NotNull
+                        @Override
+                        public CoroutineContext getContext() {
+                            return EmptyCoroutineContext.INSTANCE;
+                        }
 
-    public void onClickEventInfo(View view, String status_person, Event event) {
-        this.status_person = status_person;
-        switch (status_person) {
-            case ("not_member"):
-                break;
-            case ("member"):
-                break;
-            case ("owner"):
-                break;
+                        @Override
+                        public void resumeWith(@NotNull Object o) {
+                            try {
+                                if (o instanceof Result.Failure) {
+                                    Result.Failure failure = (Result.Failure) o;
+                                    throw failure.exception;
+                                } else {
+                                    Log.d("Appwrite", o.toString());
+                                    Log.i("User", "User info updated");
+                                    moveOnEventAC();
+                                }
+                            } catch (Throwable th) {
+                                Log.e("PERSONAL_ACTIVITY_ERROR", th.toString());
+                            }
+                        }
+                    }
+            );
+        }
+        else {
+            Log.w("EVENT", "No vacancies");
         }
     }
 
-    public void onClickEditEvent(View view) {
-        Intent intent = new Intent(this, EventEdit.class);
-        intent.putExtra("EventId", EventId);
-        startActivity(intent);
-    }
-
-    public void onClickTakePart(View view) {
-
-    }
-
     public void getEventInfo() throws AppwriteException {
-        Databases databases = new Databases(this.myApp.appwriteClient);
         databases.listDocuments(
-                myApp.databaseID,
-                myApp.event_collectionID,
-                List.of(
-                        Query.Companion.equal("userID", EventId.toString())
-                ),
-                new Continuation<Object>() {
-                    @NotNull
-                    @Override
-                    public CoroutineContext getContext() {
-                        return EmptyCoroutineContext.INSTANCE;
-                    }
+            myApp.databaseID,
+            myApp.event_collectionID,
+            List.of(
+                    Query.Companion.equal("$id", EventId)
+            ),
+            new Continuation<Object>() {
+                @NotNull
+                @Override
+                public CoroutineContext getContext() {
+                    return EmptyCoroutineContext.INSTANCE;
+                }
 
-                    @Override
-                    public void resumeWith(@NotNull Object o) {
-                        try {
-                            if (o instanceof Result.Failure) {
-                                Result.Failure failure = (Result.Failure) o;
-                                throw failure.exception;
-                            } else {
-                                Log.d("Appwrite", o.toString());
-                                DocumentList docs = (DocumentList) o;
-                                Document doc = docs.getDocuments().get(0);
-                                Map<String, Object> response = doc.getData();
-                                FillEventData(response);
-                                /*Gson g = new Gson();
-                                Log.d("UserData", docs.getDocuments().get(0).getData().toString());
-                                JsonElement jsonElement = g.toJsonTree(docs.getDocuments().get(0).getData());
-                                Log.i("INFO", "ACCESS_USER_DATA");
-                                myApp.personalData = g.fromJson(jsonElement, UserData.class);
-                                Log.i("INFO", "CHANGES");
-                                FillPersonalData(myApp.personalData);*/
-                            }
-                        } catch (Throwable th) {
-                            Log.e("PERSONAL_ACTIVITY_ERROR", th.toString());
+                @Override
+                public void resumeWith(@NotNull Object o) {
+                    try {
+                        if (o instanceof Result.Failure) {
+                            Result.Failure failure = (Result.Failure) o;
+                            throw failure.exception;
+                        } else {
+                            Log.d("Appwrite", o.toString());
+                            DocumentList docs = (DocumentList) o;
+                            Document doc = docs.getDocuments().get(0);
+                            Map<String, Object> response = doc.getData();
+                            FillEventData(response);
                         }
+                    } catch (Throwable th) {
+                        Log.e("PERSONAL_ACTIVITY_ERROR", th.toString());
                     }
                 }
+            }
         );
     }
 
     public void FillEventData(Map<String, Object> event) {
-        TextView name_tv = (TextView) findViewById(R.id.name_event);
-        TextView host_tv = (TextView) findViewById(R.id.name_host);
-        TextView num_members_tv = (TextView) findViewById(R.id.number_of_people);
-        TextView description_tv = (TextView) findViewById(R.id.description_event);
-        TextView location_tv = (TextView) findViewById(R.id.place_event);
-        TextView metro_tv = (TextView) findViewById(R.id.station_metro);
-        TextView details_tv = (TextView) findViewById(R.id.details_event);
-        TextView hashtags_tv = (TextView) findViewById(R.id.hash_event);
-        TextView date_tv = (TextView) findViewById(R.id.dataTextView);
-        TextView time_tv = (TextView) findViewById(R.id.timeTextView);
-        TextView price_tv = (TextView) findViewById(R.id.priceTextView);
+        this.participants = (ArrayList) event.get("participants");
 
-        String[] participants = (String []) event.get("participants");
-        String[] hashtags = (String []) event.get("hashtags");
+        ArrayList hashtags = (ArrayList) event.get("hashtags");
 
         name_tv.setText(event.get("name").toString());
         host_tv.setText(event.get("hostID").toString());
-        num_members_tv.setText(String.format("%d/%d", participants.length, Integer.parseInt(event.get("maxUsersQty").toString())));
+        num_members_tv.setText(String.format("%d/%d", participants.size(), Integer.parseInt(event.get("maxUsersQty").toString())));
         description_tv.setText(event.get("description").toString());
         location_tv.setText(event.get("geo").toString());
         metro_tv.setText(event.get("metro").toString());
         details_tv.setText(event.get("details").toString());
-//        hashtags_tv.setText(event.hashtags[0]);
-        date_tv.setText(event.get("dateTime").toString());
-        time_tv.setText(String.format("%s - %s","10:00", "12:00")); // FIXME
-        price_tv.setText(event.get("price").toString());
+        hashtags_tv.setText("#" + String.join("#", hashtags));
+        String str_date = event.get("dateTime").toString();
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        Calendar calendar = Calendar.getInstance();
+        try {
+            Date date = format.parse(str_date);
+            calendar.setTime(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+//        date_tv.setText(String.format("%s.%s.%s",
+//                calendar.get(Calendar.DAY_OF_MONTH),
+//                calendar.get(Calendar.MONTH),
+//                calendar.get(Calendar.YEAR)
+//                ));
+//        date_tv.setText(event.get("dateTime").toString());
+//        time_tv.setText(String.format("%s - %s",
+//                event.get("timeBegin").toString(),
+//                event.get("timeEnd").toString()
+//        ));
+//        price_tv.setText(event.get("price").toString());
+    }
+
+    public void moveOnEventAC() {
+        Intent intent = new Intent(this, event_after_registration.class);
+        intent.putExtra("eventid", EventId);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+//        finishActivity();
     }
 }
