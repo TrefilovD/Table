@@ -59,7 +59,6 @@
                 android:value="" />
         </activity>
 
-        <!-->Для теста НЕ ЗАБЫТЬ УДАЛИТЬ<!-->
         <activity
             android:name=".fragments.test_nav_menu"
             android:exported="false">
@@ -102,6 +101,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".event_host"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value=""/>
+        </activity>
+
     </application>
 
 </manifest>
