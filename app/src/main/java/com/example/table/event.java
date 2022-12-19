@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.table.Event.Event;
+import com.example.table.fragments.test_nav_menu;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -285,6 +286,14 @@ public class event extends AppCompatActivity{
         } catch (AppwriteException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, test_nav_menu.class);
+//        intent.putExtra("eventid")
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
     }
 
     public void moveOnEventAC() {

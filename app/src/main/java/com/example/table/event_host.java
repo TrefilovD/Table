@@ -285,6 +285,11 @@ public class event_host extends AppCompatActivity{
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        moveOnSearch();
+    }
+
     public void moveOnSearch() {
         /*
         Переход на окно поиска ивентов

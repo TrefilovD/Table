@@ -211,11 +211,15 @@ public class CreateEvent extends AppCompatActivity {
         );
     }
 
+    @Override
+    public void onBackPressed() {
+        moveOnSearch();
+    }
+
     private void moveOnSearch() {
         /*
         Переход на окно поиска ивентов
          */
-        Log.i("SUPER", "Super");
         Intent intent = new Intent(this, test_nav_menu.class);
 //        intent.putExtra("eventid")
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);

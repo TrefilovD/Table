@@ -372,6 +372,11 @@ public class EventEdit extends CreateEvent {
         );
     }
 
+    @Override
+    public void onBackPressed() {
+        moveOnEventHost();
+    }
+
     private void moveOnEventHost() {
         /*
         Переход на окно поиска ивентов
