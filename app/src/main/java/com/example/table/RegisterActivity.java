@@ -48,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
         String password = passwordField.getText().toString();
         String confirm_password = passwordConfirmField.getText().toString();
 
+        //TODO
         // Сюда вставить проверку на валидность email.
         // если не валид, то выводим сообщение и вызываем return
         // Также нужно ввести проверку на пустые поля
