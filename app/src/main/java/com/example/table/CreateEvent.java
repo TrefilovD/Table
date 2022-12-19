@@ -36,6 +36,10 @@ public class CreateEvent extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*
+        Обработка событий на окне CreateEvent
+        Вход: eventid: String - id выбранного ивента
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_event);
         myApp = (TableApp) getApplicationContext();
@@ -44,6 +48,10 @@ public class CreateEvent extends AppCompatActivity {
     }
 
     public void onClickCreateEvent(View view) throws AppwriteException {
+        /*
+        Обработка события "создание нового ивента"
+        Результат: переход на окно поиска события
+         */
         TextView name_tv = (TextView) findViewById(R.id.editNameEvent);
         String name = name_tv.getText().toString();
         if (name.length() == 0) {
@@ -168,7 +176,9 @@ public class CreateEvent extends AppCompatActivity {
     }
 
     private void addNewEvent(Event event) throws AppwriteException {
-
+        /*
+        Запрос к БД на добавление новой записи ивента
+         */
         databases.createDocument(
                 myApp.databaseID,
                 myApp.event_collectionID,
@@ -202,7 +212,9 @@ public class CreateEvent extends AppCompatActivity {
     }
 
     private void moveOnSearch() {
-//        String hash = new ID().toString();
+        /*
+        Переход на окно поиска ивентов
+         */
         Log.i("SUPER", "Super");
         Intent intent = new Intent(this, test_nav_menu.class);
 //        intent.putExtra("eventid")

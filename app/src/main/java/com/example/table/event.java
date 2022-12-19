@@ -39,6 +39,7 @@ public class event extends AppCompatActivity{
     private TableApp myApp;
     private Databases databases;
 
+    // Управление элементами на окне
     private TextView name_tv;
     private TextView host_tv;
     private TextView num_members_tv;
@@ -56,6 +57,10 @@ public class event extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*
+        Обработка событий на окне event
+        Вход: eventid: String - id выбранного ивента
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event);
 
@@ -85,6 +90,10 @@ public class event extends AppCompatActivity{
     }
 
     public void onClickRegistrationOnEvent(View view) throws AppwriteException {
+        /*
+        Обработка события "Регистрация на ивент"
+        Результат: переход на окно event_after_registration
+         */
         String num_members_str = num_members_tv.getText().toString();
         String[] parts = num_members_str.split("/");
         Integer min = Integer.parseInt(parts[0]);
@@ -130,6 +139,9 @@ public class event extends AppCompatActivity{
     }
 
     public void getEventInfo() throws AppwriteException {
+        /*
+        Запрос к БД на получение информации об иввенте новой записи ивента
+         */
         databases.listDocuments(
             myApp.databaseID,
             myApp.event_collectionID,
@@ -165,6 +177,9 @@ public class event extends AppCompatActivity{
     }
 
     public void FillEventData(Map<String, Object> event) throws AppwriteException {
+        /*
+        Заполнение элементов на окне
+         */
         this.participants = (ArrayList) event.get("participants");
 
         ArrayList hashtags = (ArrayList) event.get("hashtags");
@@ -224,6 +239,9 @@ public class event extends AppCompatActivity{
     }
 
     public void setHostName() throws AppwriteException {
+        /*
+        Запрос к БД на получение информации об организаторе(требуется аттрибут name)
+         */
         Databases databases = new Databases(this.myApp.appwriteClient);
         try {
             databases.listDocuments(
@@ -270,6 +288,9 @@ public class event extends AppCompatActivity{
     }
 
     public void moveOnEventAC() {
+        /*
+        Переход на окно поиска ивента после регистрации
+         */
         Intent intent = new Intent(this, event_after_registration.class);
         intent.putExtra("eventid", EventId);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);

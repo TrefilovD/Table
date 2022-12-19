@@ -45,6 +45,7 @@ public class EventEdit extends CreateEvent {
     private TableApp myApp;
     private Databases databases;
 
+    // Управление элементами на окне
     private TextView name_tv;
     private TextView minUsersQty_tv;
     private TextView maxUsersQty_tv;
@@ -65,6 +66,10 @@ public class EventEdit extends CreateEvent {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*
+        Обработка событий на окне EventEdit
+        Вход: eventid: String - id выбранного ивента
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_event);
 
@@ -101,6 +106,9 @@ public class EventEdit extends CreateEvent {
     }
 
     public void getEventInfo() throws AppwriteException {
+        /*
+        Запрос к БД на получение информации об иввенте новой записи ивента
+         */
         databases.listDocuments(
                 myApp.databaseID,
                 myApp.event_collectionID,
@@ -136,6 +144,9 @@ public class EventEdit extends CreateEvent {
     }
 
     public void FillEventData(Map<String, Object> event) {
+        /*
+        Заполнение элементов на окне
+         */
         this.event = event;
         ArrayList hashtags = (ArrayList) event.get("hashtags");
         runOnUiThread(new Runnable() {
@@ -196,6 +207,10 @@ public class EventEdit extends CreateEvent {
 
     @Override
     public void onClickCreateEvent(View view) throws AppwriteException {
+        /*
+        Обработка события "Редактирование ивента"
+        Результат: переход на окно поиска события
+         */
         TextView name_tv = (TextView) findViewById(R.id.editNameEvent);
         String name = name_tv.getText().toString();
         if (name.length() == 0) {
@@ -322,7 +337,9 @@ public class EventEdit extends CreateEvent {
     }
 
     private void updateEvent(Event event) throws AppwriteException {
-
+        /*
+        Запрос к БД на обновление записи ивента
+         */
         databases.updateDocument(
                 myApp.databaseID,
                 myApp.event_collectionID,
@@ -356,6 +373,9 @@ public class EventEdit extends CreateEvent {
     }
 
     private void moveOnEventHost() {
+        /*
+        Переход на окно поиска ивентов
+         */
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

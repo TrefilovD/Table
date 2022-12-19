@@ -43,6 +43,7 @@ public class event_host extends AppCompatActivity{
     private TableApp myApp;
     private Databases databases;
 
+    // Управление элементами на окне
     private TextView name_tv;
     private TextView host_tv;
     private TextView num_members_tv;
@@ -60,6 +61,10 @@ public class event_host extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*
+        Обработка событий на окне event_host
+        Вход: eventid: String - id выбранного ивента
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_host);
 
@@ -89,6 +94,7 @@ public class event_host extends AppCompatActivity{
     }
 
     public void onEventEdit(View view) throws AppwriteException {
+        // Переход на окно редактирования ивента
         Intent intent = new Intent(this, EventEdit.class);
         intent.putExtra("eventid", EventId);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -96,6 +102,10 @@ public class event_host extends AppCompatActivity{
     }
 
     public void onCancelEvent(View view) throws AppwriteException {
+        /*
+        Обработка события "Удаление ивента"
+        Результат: переход на окно event
+         */
         databases.deleteDocument(
                 myApp.databaseID,
                 myApp.event_collectionID,
@@ -127,6 +137,9 @@ public class event_host extends AppCompatActivity{
     }
 
     public void getEventInfo() throws AppwriteException {
+        /*
+        Запрос к БД на получение информации об иввенте новой записи ивента
+         */
         databases.listDocuments(
                 myApp.databaseID,
                 myApp.event_collectionID,
@@ -162,6 +175,9 @@ public class event_host extends AppCompatActivity{
     }
 
     public void FillEventData(Map<String, Object> event) throws AppwriteException {
+        /*
+        Заполнение элементов на окне
+         */
         this.participants = (ArrayList) event.get("participants");
 
         ArrayList hashtags = (ArrayList) event.get("hashtags");
@@ -221,6 +237,9 @@ public class event_host extends AppCompatActivity{
     }
 
     public void setHostName() throws AppwriteException {
+        /*
+        Запрос к БД на получение информации об организаторе(требуется аттрибут name)
+         */
         Databases databases = new Databases(this.myApp.appwriteClient);
         try {
             databases.listDocuments(
@@ -267,6 +286,9 @@ public class event_host extends AppCompatActivity{
     }
 
     public void moveOnSearch() {
+        /*
+        Переход на окно поиска ивентов
+         */
         Intent intent = new Intent(this, test_nav_menu.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);

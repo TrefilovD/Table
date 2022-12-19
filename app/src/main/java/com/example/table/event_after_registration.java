@@ -39,6 +39,7 @@ public class event_after_registration extends AppCompatActivity {
     private TableApp myApp;
     private Databases databases;
 
+    // Управление элементами на окне
     private TextView name_tv;
     private TextView host_tv;
     private TextView num_members_tv;
@@ -55,6 +56,10 @@ public class event_after_registration extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*
+        Обработка событий на окне event_after_registration
+        Вход: eventid: String - id выбранного ивента
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_after_registration);
 
@@ -84,10 +89,15 @@ public class event_after_registration extends AppCompatActivity {
     }
 
     public void onClickMove2Chat(View view) {
+        // Переход в telegram чат
         // TODO open tg link
     }
 
     public void cancelParticipate(View view) throws AppwriteException {
+        /*
+        Обработка события "Отмена регистрация"
+        Результат: переход на окно event
+         */
         Map<String, Object> map = new HashMap<String, Object>();
         participants.remove(myApp.userID);
         map.put("participants", participants);
@@ -124,6 +134,9 @@ public class event_after_registration extends AppCompatActivity {
     }
 
     public void getEventInfo() throws AppwriteException {
+        /*
+        Запрос к БД на получение информации об иввенте новой записи ивента
+         */
         databases.listDocuments(
                 myApp.databaseID,
                 myApp.event_collectionID,
@@ -159,6 +172,9 @@ public class event_after_registration extends AppCompatActivity {
     }
 
     public void FillEventData(Map<String, Object> event) throws AppwriteException {
+        /*
+        Заполнение элементов на окне
+         */
         this.participants = (ArrayList) event.get("participants");
 
         ArrayList hashtags = (ArrayList) event.get("hashtags");
@@ -218,6 +234,9 @@ public class event_after_registration extends AppCompatActivity {
     }
 
     public void setHostName() throws AppwriteException {
+        /*
+        Запрос к БД на получение информации об организаторе(требуется аттрибут name)
+         */
         Databases databases = new Databases(this.myApp.appwriteClient);
         try {
             databases.listDocuments(
@@ -264,6 +283,9 @@ public class event_after_registration extends AppCompatActivity {
     }
 
     public void moveOnEvent() {
+        /*
+        Переход на окно event
+         */
         Intent intent = new Intent(this, event.class);
         intent.putExtra("eventid", EventId);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
