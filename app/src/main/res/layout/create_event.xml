@@ -6,7 +6,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <RelativeLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_table">
@@ -17,7 +19,6 @@
             android:layout_height="283dp">
 
         </ImageView>
-
         <ImageButton
             android:id="@+id/strelka5"
             android:layout_width="43dp"
@@ -105,6 +106,8 @@
         </TextView>
         <EditText
             android:id="@+id/editMinKolvo"
+            android:digits="123456789"
+            android:inputType="number"
             android:layout_width="50dp"
             android:layout_height="28dp"
             android:layout_alignRight="@+id/kolichestvoTextV"
@@ -120,6 +123,8 @@
         </EditText>
         <EditText
             android:id="@+id/editMaxKolvo"
+            android:digits="123456789"
+            android:inputType="number"
             android:layout_width="50dp"
             android:layout_height="28dp"
             android:layout_alignRight="@+id/kolichestvoTextV"
@@ -186,7 +191,7 @@
             android:layout_marginTop="5dp"
             >
         </ImageView>
-        
+
         <TextView
             android:id="@+id/kogdaTextV"
             android:layout_width="wrap_content"
@@ -310,7 +315,7 @@
             android:layout_alignLeft="@+id/nazvanieTextV"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selection_gorod"
-            android:entries="@array/metro_items"
+            android:entries="@array/cities_items"
             android:background="@color/white"
             android:layout_alignEnd="@id/editNameEvent"
 
@@ -379,6 +384,7 @@
             app:layout_constraintTop_toBottomOf="@+id/selection_metro"
             android:background="@color/white"
             android:layout_alignEnd="@id/editNameEvent"
+            android:entries="@array/metro_items"
             >
         </Spinner>
         <GridLayout
@@ -518,7 +524,7 @@
             app:layout_constraintTop_toTopOf="parent"
             >
         </TextView>
-        <TextView
+        <EditText
             android:id="@+id/hashtag_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -535,7 +541,7 @@
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             >
-        </TextView>
+        </EditText>
 
         <Button
             android:id="@+id/buttonCreateEvent"
@@ -544,12 +550,14 @@
             android:layout_below="@id/hashtag_event"
             android:layout_alignRight="@+id/hashtag_event"
             android:layout_marginVertical="20dp"
+            android:layout_marginTop="23dp"
             android:background="@drawable/rounded_button"
-            android:text="@string/create"
-            android:textColor="@color/darknotes"
-            android:textAllCaps="false"
             android:clickable="true"
-            />
+            android:onClick="onClickCreateEvent"
+            android:text="@string/create"
+            android:textAllCaps="false"
+            android:textColor="@color/darknotes"
+            tools:ignore="UsingOnClickInXml" />
     </RelativeLayout>
 
 </ScrollView>

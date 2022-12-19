@@ -2,6 +2,10 @@ package com.example.table;
 
 import android.app.Application;
 
+import com.example.table.Event.Event;
+
+import java.util.ArrayList;
+
 import java.util.Map;
 
 import io.appwrite.Client;
@@ -31,5 +35,7 @@ public class TableApp extends Application {
     public Client appwriteClient;
     //public AuthorisationData sessionData;
     public Session session;
+
+    public ArrayList<Event> Events;
     public Map<String, Object> personalData;
 }
