@@ -45,7 +45,7 @@ public class CreateEvent extends AppCompatActivity {
         TextView name_tv = (TextView) findViewById(R.id.editNameEvent);
         TextView minUsersQty_tv = (TextView) findViewById(R.id.editMinKolvo);
         TextView maxUsersQty_tv = (TextView) findViewById(R.id.editMaxKolvo);
-        TextView price_tv = (TextView) findViewById(R.id.priceTextView);
+        TextView price_tv = (TextView) findViewById(R.id.price_createEvent);
         CheckBox price_box = (CheckBox) findViewById(R.id.checkbox_free);
         TextView dateTime_tv = (TextView) findViewById(R.id.editDate);
         TextView editTimeEnd_tv = (TextView) findViewById(R.id.editTimeEnd);
