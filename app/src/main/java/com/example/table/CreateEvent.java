@@ -2,6 +2,7 @@ package com.example.table;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.table.Event.Event;
+import com.example.table.fragments.test_nav_menu;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -43,32 +45,53 @@ public class CreateEvent extends AppCompatActivity {
 
     public void onClickCreateEvent(View view) throws AppwriteException {
         TextView name_tv = (TextView) findViewById(R.id.editNameEvent);
+        String name = name_tv.getText().toString();
+        if (name.length() == 0) {
+            name_tv.setBackgroundColor(Color.RED);
+            return;
+        }
+        name_tv.setBackgroundColor(Color.WHITE);
+
         TextView minUsersQty_tv = (TextView) findViewById(R.id.editMinKolvo);
         TextView maxUsersQty_tv = (TextView) findViewById(R.id.editMaxKolvo);
-        TextView price_tv = (TextView) findViewById(R.id.price_createEvent);
-        CheckBox price_box = (CheckBox) findViewById(R.id.checkbox_free);
-        TextView dateTime_tv = (TextView) findViewById(R.id.editDate);
-        TextView editTimeEnd_tv = (TextView) findViewById(R.id.editTimeEnd);
-        TextView editTimeBegin_tv = (TextView) findViewById(R.id.editTimeBegin);
-        Spinner spinner_town = (Spinner) findViewById(R.id.spinner_gorod);
-        TextView geo_tv = (TextView) findViewById(R.id.editPlace);
-        Spinner spinner_metro = (Spinner) findViewById(R.id.spinner_metro);
-        TextView description_tv = (TextView) findViewById(R.id.editDescription);
-        TextView linkToChat_tv = (TextView) findViewById(R.id.editChat);
-        TextView details_tv = (TextView) findViewById(R.id.editDetali);
-        TextView hashtags_tv = (TextView) findViewById(R.id.hashtag_event);
-
-
-        String name = name_tv.getText().toString();
         Integer minUsersQty, maxUsersQty;
         try {
             minUsersQty = Integer.parseInt(minUsersQty_tv.getText().toString());
             maxUsersQty = Integer.parseInt(maxUsersQty_tv.getText().toString());
+            if (minUsersQty > maxUsersQty) {
+                minUsersQty_tv.setBackgroundColor(Color.RED);
+                maxUsersQty_tv.setBackgroundColor(Color.RED);
+                return;
+            }
         }
         catch (NumberFormatException e) {
-            Log.e("Value error", "Mistakes in min/max users");
+            minUsersQty_tv.setBackgroundColor(Color.RED);
+            maxUsersQty_tv.setBackgroundColor(Color.RED);
             return;
         }
+        minUsersQty_tv.setBackgroundColor(Color.WHITE);
+        maxUsersQty_tv.setBackgroundColor(Color.WHITE);
+
+        TextView price_tv = (TextView) findViewById(R.id.price_createEvent);
+        CheckBox price_box = (CheckBox) findViewById(R.id.checkbox_free);
+        Double price = 0.;
+//        if (price_box.isChecked()) {
+        try {
+            price = Double.parseDouble(price_tv.getText().toString());
+        }
+        catch (NumberFormatException e) {
+            if (price_tv.getText().toString().length() == 0) {
+                price = 0.;
+            }
+            else {
+                price_tv.setBackgroundColor(Color.RED);
+                return;
+            }
+        }
+//        }
+        price_tv.setBackgroundColor(Color.WHITE);
+
+        TextView dateTime_tv = (TextView) findViewById(R.id.editDate);
         Date dateTime, editTimeEnd, editTimeBegin;
         String str_date = dateTime_tv.getText().toString();
         DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
@@ -76,9 +99,13 @@ public class CreateEvent extends AppCompatActivity {
             dateTime = format.parse(str_date);
         }
         catch (ParseException e) {
-            Log.e("Value error", "Mistakes in date");
+            dateTime_tv.setBackgroundColor(Color.RED);
             return;
         }
+        dateTime_tv.setBackgroundColor(Color.WHITE);
+
+        TextView editTimeEnd_tv = (TextView) findViewById(R.id.editTimeEnd);
+        TextView editTimeBegin_tv = (TextView) findViewById(R.id.editTimeBegin);
         String editTimeEnd_str = editTimeEnd_tv.getText().toString();
         String editTimeBegin_str = editTimeBegin_tv.getText().toString();
         format = new SimpleDateFormat("hh:mm", Locale.ENGLISH);
@@ -90,24 +117,29 @@ public class CreateEvent extends AppCompatActivity {
             Log.e("Value error", "Mistakes in date");
             return;
         }
-        Double price = 0.;
-        if (!price_box.isChecked()) {
-            price = Double.parseDouble(price_tv.getText().toString());
-        }
 
-        if (minUsersQty >= maxUsersQty) {
-            minUsersQty = maxUsersQty;
-            Log.w("MIN more MAX", "MIN = MAX");
-        }
-
+        Spinner spinner_town = (Spinner) findViewById(R.id.spinner_gorod);
         String city = spinner_town.getSelectedItem().toString();
+
+        TextView geo_tv = (TextView) findViewById(R.id.editPlace);
         String geo = geo_tv.getText().toString();
+
+        Spinner spinner_metro = (Spinner) findViewById(R.id.spinner_metro);
         String[] metro = new String[] {spinner_metro.getSelectedItem().toString()};
+
+        TextView description_tv = (TextView) findViewById(R.id.editDescription);
         String description = description_tv.getText().toString();
+
+        TextView linkToChat_tv = (TextView) findViewById(R.id.editChat);
         String linkToChat = linkToChat_tv.getText().toString();
+
+        TextView details_tv = (TextView) findViewById(R.id.editDetali);
         String details = details_tv.getText().toString();
+
+        TextView hashtags_tv = (TextView) findViewById(R.id.hashtag_event);
         String[] hashtags = hashtags_tv.getText().toString().
                 replaceFirst("#", "").split("#");
+
         String status = "created";
         String hostID = myApp.userID;
         String[] participants = new String[] {myApp.userID};
@@ -156,7 +188,7 @@ public class CreateEvent extends AppCompatActivity {
                                 Result.Failure failure = (Result.Failure) o;
                                 throw failure.exception;
                             } else {
-//                                moveOnEvent();
+                                moveOnSearch();
                             }
                         } catch (Throwable th) {
                             Log.e("CREATING EVENT ERROR", th.toString());
@@ -169,10 +201,10 @@ public class CreateEvent extends AppCompatActivity {
         );
     }
 
-    private void moveOnEvent() {
+    private void moveOnSearch() {
 //        String hash = new ID().toString();
         Log.i("SUPER", "Super");
-        Intent intent = new Intent(this, event.class);
+        Intent intent = new Intent(this, test_nav_menu.class);
 //        intent.putExtra("eventid")
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
