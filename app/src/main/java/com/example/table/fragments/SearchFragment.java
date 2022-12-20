@@ -1,11 +1,11 @@
 package com.example.table.fragments;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -27,14 +27,11 @@ import org.jetbrains.annotations.NotNull;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import com.example.table.RegisterStep2_activity;
-import com.example.table.event;
 
 import io.appwrite.Query;
 import io.appwrite.exceptions.AppwriteException;
@@ -53,6 +50,7 @@ import kotlin.coroutines.EmptyCoroutineContext;
  */
 public class SearchFragment extends Fragment {
     TableApp myApp;
+    List <String> Events_ID = Arrays.asList("1","2");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -175,22 +173,35 @@ public class SearchFragment extends Fragment {
             }
         });
         //кнопка для перехода к созданию мероприятия
-        Button create_event_btn = (Button) view.findViewById(R.id.buttom_createevent);
+        Button create_event_btn = (Button) getView().findViewById(R.id.buttom_createevent);
         create_event_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onCreateEventBtn(view);
             }
         });
+        Log.d("fff", String.valueOf(Events_ID.size()));
 
         //кнопка перехода к записи на мероприятие
-        Button register_on_event = (Button) view.findViewById(R.id.zapisatsya_Button_cardOfevent_1);
-        register_on_event.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                register_on_event_1_btn();
+        Button register_on_event1 = (Button) getView().findViewById(R.id.zapisatsya_Button_cardOfevent_1);
+        if (Events_ID.size()>0) {
+            register_on_event1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    register_on_event_btn(Events_ID.get(0));
+                }
+            });
+            Log.d("fff", Events_ID.get(0));
+            Button register_on_event2 = (Button) view.findViewById(R.id.zapisatsya_Button_cardOfevent_2);
+            if (Events_ID.size()==2) {
+                register_on_event2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        register_on_event_btn(Events_ID.get(1));
+                    }
+                });
             }
-        });
+        }
     }
 
     public void onClick_new(View view) throws AppwriteException {
@@ -283,9 +294,7 @@ public class SearchFragment extends Fragment {
         metro_card1.setText(metro);
         TextView price_card1 = (TextView) getView().findViewById(R.id.price_cardOfevent_1);
         price_card1.setText(eventData1.get("price").toString());
-        TextView id_card1 = (TextView) getView().findViewById(R.id.zapisatsya_Button_cardOfevent_1);
-        id_card1.setTag(eventData1.get("$id"));
-
+        Events_ID.set(0, String.valueOf(eventData1.get("$id")));
         if (size>1){
             TextView name_card2 = (TextView) getView().findViewById(R.id.name_cardOfevent_2);
             name_card2.setText(eventData2.get("name").toString());
@@ -310,8 +319,7 @@ public class SearchFragment extends Fragment {
             metro_card2.setText(metro);
             TextView price_card2 = (TextView) getView().findViewById(R.id.price_cardOfevent_2);
             price_card2.setText(eventData2.get("price").toString());
-            TextView id_card2 = (TextView) getView().findViewById(R.id.zapisatsya_Button_cardOfevent_2);
-            id_card2.setTag(eventData2.get("$id"));
+            Events_ID.set(1, String.valueOf(eventData2.get("$id")));
         }
         else {
             TextView name_card2 = (TextView) getView().findViewById(R.id.name_cardOfevent_2);
@@ -326,9 +334,7 @@ public class SearchFragment extends Fragment {
             metro_card2.setText("");
             TextView price_card2 = (TextView) getView().findViewById(R.id.price_cardOfevent_2);
             price_card2.setText("");
-            TextView id_card2 = (TextView) getView().findViewById(R.id.zapisatsya_Button_cardOfevent_2);
-            id_card2.setTag("");
-
+            Events_ID.remove(1);
         }
 
 
@@ -338,9 +344,9 @@ public class SearchFragment extends Fragment {
         startActivity(intent);
     }
 
-    public void register_on_event_1_btn(){
+    public void register_on_event_btn(String eventID){
         Intent intent = new Intent(getActivity(), event.class);
-        intent.putExtra("eventid", "635af8d3091b24e06a93");
+        intent.putExtra("eventid", eventID);
         startActivity(intent);
     }
 
